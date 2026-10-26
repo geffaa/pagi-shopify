@@ -1,0 +1,14 @@
+{%- comment -%} Diet badges from the pagi.diet metafield. - product {%- endcomment -%}
+{%- assign diets = product.metafields.pagi.diet.value -%}
+{%- if diets != blank -%}
+  <span class="diets">
+    {%- for d in diets -%}
+      {%- case d -%}
+        {%- when 'vg' -%}{%- assign label = 'dish.diet.vg' | t -%}
+        {%- when 'gf' -%}{%- assign label = 'dish.diet.gf' | t -%}
+        {%- else -%}{%- assign label = 'dish.diet.v' | t -%}
+      {%- endcase -%}
+      <abbr class="diet diet--{{ d }}" title="{{ label }}">{{ d | upcase }}</abbr>
+    {%- endfor -%}
+  </span>
+{%- endif -%}

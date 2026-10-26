@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>Not found</title>
+<script>
+  // A deep link into the store before its Service Worker is installed: start it, then come back.
+  const i = location.pathname.indexOf('/store/');
+  if (i >= 0) location.replace(location.pathname.slice(0, i) + '/store/?next=' + encodeURIComponent(location.pathname + location.search));
+  else document.write('<p style="font:16px system-ui;padding:24px">Page not found.</p>');
+</script>

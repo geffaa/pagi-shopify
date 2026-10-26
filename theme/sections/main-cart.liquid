@@ -1,0 +1,10 @@
+<section class="section">
+  <div class="container cart-page">
+    <h1 class="d-1">{{ 'cart.title' | t }}</h1>
+    <cart-items data-cart-root="{{ section.id }}" data-count="{{ cart.item_count }}" class="cart-page__body">{% render 'cart-body' %}</cart-items>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart", "settings": [] }
+{% endschema %}

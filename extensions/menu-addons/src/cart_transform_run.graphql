@@ -1,0 +1,22 @@
+query CartTransformRunInput {
+  cart {
+    lines {
+      id
+      quantity
+      mods: attribute(key: "_mods") {
+        value
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+          product {
+            modifiers: metafield(namespace: "pagi", key: "modifiers") {
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+}

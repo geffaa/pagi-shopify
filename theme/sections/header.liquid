@@ -1,0 +1,40 @@
+<div class="status-bar" data-open-status hidden></div>
+<header class="header">
+  <div class="container header__inner">
+    <button type="button" class="icon-btn menu-btn" data-open-dialog="nav-drawer" aria-label="{{ 'header.menu' | t }}">{% render 'icon', name: 'menu' %}</button>
+    <a href="{{ routes.root_url }}" class="wordmark" aria-label="{{ shop.name | escape }}">{% render 'icon', name: 'sun' %}{{ settings.wordmark | escape }}</a>
+    <nav class="nav" aria-label="{{ 'header.menu' | t }}">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+      {%- endfor -%}
+    </nav>
+    <div class="header__actions">
+      {% render 'language-switch', id: 'header' %}
+      <a href="{{ routes.cart_url }}" class="cart-btn" data-open-dialog="cart-drawer" aria-label="{{ 'header.cart' | t: count: cart.item_count }}">
+        {% render 'icon', name: 'bag' %}
+        <span class="cart-badge" data-cart-count data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<dialog class="drawer drawer--left" id="nav-drawer" aria-label="{{ 'header.menu' | t }}">
+  <div class="drawer__head">
+    <span class="wordmark">{% render 'icon', name: 'sun' %}{{ settings.wordmark }}</span>
+    <button type="button" class="icon-btn" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+  </div>
+  <nav class="drawer__body stack" style="--gap:2px">
+    {%- for link in section.settings.menu.links -%}
+      <a href="{{ link.url }}" class="d-2 nav-drawer__link">{{ link.title | escape }}</a>
+    {%- endfor -%}
+  </nav>
+  <div class="drawer__foot">{% render 'language-switch', id: 'drawer' %}</div>
+</dialog>
+
+{% schema %}
+{
+  "name": "Header",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [{ "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }]
+}
+{% endschema %}

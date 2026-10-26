@@ -1,0 +1,33 @@
+{%- comment -%} Shared by the drawer and the cart page. {%- endcomment -%}
+{%- liquid
+  assign has_dish = false
+  for item in cart.items
+    if item.product.type == 'Menu'
+      assign has_dish = true
+    endif
+  endfor
+  assign needs_slot = false
+  if has_dish and cart.attributes.pickup_slot == blank
+    assign needs_slot = true
+  endif
+-%}
+{%- if cart.item_count > 0 -%}
+  <div class="cart__lines">
+    {%- for item in cart.items -%}{% render 'cart-line', item: item, index: forloop.index %}{%- endfor -%}
+  </div>
+  {% render 'fulfilment', has_dish: has_dish %}
+  <form class="cart__foot" action="{{ routes.cart_url }}" method="post" data-checkout-form>
+    <div class="totals"><span>{{ 'cart.subtotal' | t }}</span><span>{{ cart.total_price | money }}</span></div>
+    <p class="xsmall muted">{{ settings.tax_note }}</p>
+    <button type="submit" name="checkout" class="btn btn--block btn--lg" data-checkout data-needs-slot="{{ has_dish }}" {% if needs_slot %}disabled{% endif %}>
+      {{ 'cart.checkout' | t }} {% render 'icon', name: 'arrow' %}
+    </button>
+    <p class="xsmall muted center" data-checkout-hint {% unless needs_slot %}hidden{% endunless %}>{{ 'cart.choose_time' | t }}</p>
+  </form>
+{%- else -%}
+  <div class="stack cart__empty" style="--gap:14px">
+    <p class="d-2">{{ 'cart.empty' | t }}</p>
+    <p class="muted small">{{ 'cart.empty_text' | t }}</p>
+    <a href="{{ routes.root_url }}#menu" class="btn" data-close-dialog>{{ 'cart.browse' | t }}</a>
+  </div>
+{%- endif -%}

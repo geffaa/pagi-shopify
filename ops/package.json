@@ -1,0 +1,19 @@
+{
+  "name": "pagi-ops",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slot capacity, kitchen board and catering requests for the Pagi Shopify store",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "hono": "^4.13.13"
+  }
+}

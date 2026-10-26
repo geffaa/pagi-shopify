@@ -1,0 +1,120 @@
+{
+  "general": {
+    "close": "Close",
+    "error": "Something went wrong. Please try again.",
+    "skip": "Skip to content",
+    "language": "Language",
+    "view_all": "View all"
+  },
+  "header": {
+    "menu": "Menu",
+    "cart": {
+      "one": "Order, {{ count }} item",
+      "other": "Order, {{ count }} items"
+    },
+    "order_now": "Order now",
+    "status_open": "Kitchen open · last orders {{ time }}",
+    "status_soon": "Opens at {{ time }}",
+    "status_closed": "Closed now · order ahead for tomorrow"
+  },
+  "home": {
+    "how_title": "Skip the queue",
+    "menu_title": "The menu",
+    "menu_lead": "Everything is cooked to order. Choose your eggs, your bread and what goes on top."
+  },
+  "dish": {
+    "add": "Add",
+    "add_to_order": "Add to order",
+    "choose": "Choose",
+    "required": "Required",
+    "optional": "Optional",
+    "choose_one": "Choose 1",
+    "choose_exactly": "Choose {{ count }}",
+    "up_to": "Up to {{ count }}",
+    "need": "Choose {{ count }} for {{ group }}.",
+    "too_many": "Up to {{ count }} for {{ group }}.",
+    "note": "Note for the kitchen",
+    "note_placeholder": "Allergies, no chilli, sauce on the side…",
+    "customise": "Customise",
+    "from": "From {{ price }}",
+    "quantity": "Quantity",
+    "pickup_info": "Pickup at the counter or delivery within 5 km. You choose a time in your order.",
+    "diet": {
+      "v": "Vegetarian",
+      "vg": "Vegan",
+      "gf": "Gluten-free"
+    }
+  },
+  "product": {
+    "add": "Add to order",
+    "size": "Size",
+    "amount": "Amount",
+    "beans_info": "Roasted weekly. Ships across Indonesia, or collect with your brunch.",
+    "gift_info": "Sent by email right after checkout. Use it online or at the counter."
+  },
+  "cart": {
+    "title": "Your order",
+    "empty": "Nothing here yet",
+    "empty_text": "Start with a plate, a bowl or a flat white.",
+    "browse": "See the menu",
+    "remove": "Remove",
+    "increase": "Add one {{ product }}",
+    "decrease": "Remove one {{ product }}",
+    "quantity": "Quantity of {{ product }}",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "added": "Added to your order",
+    "how": "How do you want it?",
+    "pickup": "Pickup",
+    "pickup_sub": "At the counter, no queue",
+    "delivery": "Delivery",
+    "delivery_sub": "Within 5 km",
+    "time_pickup": "Pickup time",
+    "time_delivery": "Delivery time",
+    "loading": "Checking the kitchen…",
+    "slots_error": "Couldn't load times. Check your connection and try again.",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "left": {
+      "one": "{{ count }} left",
+      "other": "{{ count }} left"
+    },
+    "full": "Full",
+    "no_slots": "No times left on this day.",
+    "choose_time": "Choose a time to check out",
+    "slot_gone": "That time just filled up. Please choose another.",
+    "ready_at": "Ready at {{ time }}",
+    "no_slot_needed": "Beans ship and gift cards arrive by email, so no time needed.",
+    "retry": "Try again"
+  },
+  "catering": {
+    "title": "Catering",
+    "packages": "Packages",
+    "per_guest": "{{ price }} per guest",
+    "form_title": "Request a quote",
+    "name": "Name",
+    "email": "Email",
+    "phone": "WhatsApp number",
+    "date": "Event date",
+    "guests": "Guests",
+    "package": "Package",
+    "notes": "Anything we should know?",
+    "notes_placeholder": "Villa address, dietary needs, timing…",
+    "submit": "Send request",
+    "estimate": "Estimate: {{ amount }}",
+    "terms": "We reply within a day with a quote. You confirm by paying a 50% deposit through our secure checkout."
+  },
+  "footer": {
+    "hours": "Hours",
+    "daily": "Every day",
+    "kitchen": "Kitchen until {{ time }}",
+    "find": "Find us",
+    "directions": "Directions",
+    "whatsapp": "WhatsApp us",
+    "tax": "Prices include 10% PB1 tax."
+  },
+  "404": {
+    "title": "This page isn't on the menu",
+    "back": "Back to the menu"
+  }
+}

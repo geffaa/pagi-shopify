@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_paper }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {{ 'fraunces-soft.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+    {%- endif -%}
+    <title>
+      {{- page_title -}}
+      {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
+    </title>
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+    {%- render 'meta-tags' -%}
+    {%- render 'theme-tokens' -%}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    <script type="application/json" id="theme-config">
+      {
+        "routes": {
+          "root": {{ routes.root_url | json }},
+          "cart": {{ routes.cart_url | json }},
+          "cartAdd": {{ routes.cart_add_url | json }},
+          "cartChange": {{ routes.cart_change_url | json }},
+          "cartUpdate": {{ routes.cart_update_url | json }}
+        },
+        "locale": {{ request.locale.iso_code | json }},
+        "moneySample": {{ 12345600 | money | strip_html | json }},
+        "shop": {
+          "timeZone": {{ settings.timezone | json }},
+          "open": {{ settings.hours_open | json }},
+          "close": {{ settings.hours_close | json }},
+          "kitchenClose": {{ settings.kitchen_close | json }},
+          "slots": {{ settings.slots_endpoint | json }}
+        },
+        "strings": {
+          "error": {{ 'general.error' | t | json }},
+          "added": {{ 'cart.added' | t | json }},
+          "statusOpen": {{ 'header.status_open' | t: time: settings.kitchen_close | json }},
+          "statusSoon": {{ 'header.status_soon' | t: time: settings.hours_open | json }},
+          "statusClosed": {{ 'header.status_closed' | t | json }},
+          "today": {{ 'cart.today' | t | json }},
+          "tomorrow": {{ 'cart.tomorrow' | t | json }},
+          "leftOne": {{ 'cart.left' | t: count: 1 | json }},
+          "leftOther": {{ 'cart.left' | t: count: '{n}' | json }},
+          "full": {{ 'cart.full' | t | json }},
+          "noSlots": {{ 'cart.no_slots' | t | json }},
+          "slotsError": {{ 'cart.slots_error' | t | json }},
+          "retry": {{ 'cart.retry' | t | json }},
+          "slotGone": {{ 'cart.slot_gone' | t | json }},
+          "readyAt": {{ 'cart.ready_at' | t: time: '{time}' | json }},
+          "need": {{ 'dish.need' | t: count: '{n}', group: '{group}' | json }},
+          "tooMany": {{ 'dish.too_many' | t: count: '{n}', group: '{group}' | json }}
+        }
+      }
+    </script>
+    <script src="{{ 'global.js' | asset_url }}" type="module"></script>
+    {{ content_for_header }}
+  </head>
+  <body class="template-{{ template.name | handle }}">
+    <a class="skip-link" href="#main">{{ 'general.skip' | t }}</a>
+    {% sections 'header-group' %}
+    <main id="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+    {% section 'cart-drawer' %}
+    <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
+  </body>
+</html>

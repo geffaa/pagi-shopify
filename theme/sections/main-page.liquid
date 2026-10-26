@@ -1,0 +1,10 @@
+<section class="section">
+  <div class="container narrow stack" style="--gap:18px">
+    <h1 class="d-1">{{ page.title | escape }}</h1>
+    <div class="rte">{{ page.content }}</div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Page", "settings": [] }
+{% endschema %}

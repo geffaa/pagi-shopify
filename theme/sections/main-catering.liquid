@@ -1,0 +1,80 @@
+{%- comment -%}
+  Catering: packages and a quote request. The form posts to the app proxy, and pagi-ops turns
+  it into a draft order the team prices and sends from Shopify admin. Package keys must match
+  catering.packages in scripts/catalog.json (the backend checks them).
+{%- endcomment -%}
+<section class="section catering">
+  <div class="container catering__grid">
+    <div class="stack" style="--gap:18px">
+      <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1 class="d-1">{{ section.settings.heading | escape }}</h1>
+      <p class="lead muted">{{ section.settings.text | escape }}</p>
+      <h2 class="d-3">{{ 'catering.packages' | t }}</h2>
+      <ul class="packages" role="list">
+        {%- for block in section.blocks -%}
+          {%- assign per = block.settings.per_guest | times: 100 | money -%}
+          <li class="package" {{ block.shopify_attributes }}>
+            <p class="d-3">{{ block.settings.title | escape }}</p>
+            <p class="small muted">{{ block.settings.text | escape }}</p>
+            <p class="small"><b>{{ 'catering.per_guest' | t: price: per }}</b></p>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <catering-form class="card" data-endpoint="{{ section.settings.endpoint }}" data-min-days="{{ section.settings.min_days }}">
+      <form class="stack" style="--gap:14px" novalidate>
+        <h2 class="d-2">{{ 'catering.form_title' | t }}</h2>
+        <label class="field"><span class="small">{{ 'catering.name' | t }}</span><input name="name" autocomplete="name" required><em data-err="name"></em></label>
+        <div class="field-row">
+          <label class="field"><span class="small">{{ 'catering.email' | t }}</span><input name="email" type="email" autocomplete="email" required><em data-err="email"></em></label>
+          <label class="field"><span class="small">{{ 'catering.phone' | t }}</span><input name="phone" type="tel" autocomplete="tel" placeholder="+62"><em data-err="phone"></em></label>
+        </div>
+        <div class="field-row">
+          <label class="field"><span class="small">{{ 'catering.date' | t }}</span><input name="date" type="date" required><em data-err="date"></em></label>
+          <label class="field"><span class="small">{{ 'catering.guests' | t }}</span><input name="guests" type="number" min="{{ section.settings.min_guests }}" max="120" value="{{ section.settings.min_guests }}" inputmode="numeric" required><em data-err="guests"></em></label>
+        </div>
+        <fieldset class="field">
+          <legend class="small">{{ 'catering.package' | t }}</legend>
+          <div class="group__opts">
+            {%- for block in section.blocks -%}
+              <label class="opt"><input type="radio" name="package" value="{{ block.settings.key }}" data-per="{{ block.settings.per_guest | times: 100 }}" {% if forloop.first %}checked{% endif %}><span class="opt__label">{{ block.settings.title | escape }}</span></label>
+            {%- endfor -%}
+          </div>
+          <em data-err="package"></em>
+        </fieldset>
+        <label class="field"><span class="small">{{ 'catering.notes' | t }}</span><textarea name="notes" rows="3" maxlength="1000" placeholder="{{ 'catering.notes_placeholder' | t }}"></textarea></label>
+        <p class="d-3" data-estimate data-template="{{ 'catering.estimate' | t: amount: '{amount}' | escape }}"></p>
+        <button type="submit" class="btn btn--lg btn--block">{{ 'catering.submit' | t }}</button>
+        <p class="xsmall muted">{{ 'catering.terms' | t }}</p>
+        <p class="notice" data-done role="status" hidden></p>
+      </form>
+    </catering-form>
+  </div>
+</section>
+<script src="{{ 'catering.js' | asset_url }}" type="module"></script>
+
+{% schema %}
+{
+  "name": "Catering",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Villas, retreats, offsites" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Brunch for the whole villa" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "From 15 to 120 guests, set up and cleared by our team anywhere between Canggu and Seseh." },
+    { "type": "text", "id": "endpoint", "label": "Request endpoint (app proxy)", "default": "/apps/pagi/catering" },
+    { "type": "number", "id": "min_days", "label": "Minimum days ahead", "default": 3 },
+    { "type": "number", "id": "min_guests", "label": "Minimum guests", "default": 15 }
+  ],
+  "blocks": [
+    {
+      "type": "package",
+      "name": "Package",
+      "settings": [
+        { "type": "text", "id": "key", "label": "Key (matches the backend)" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "number", "id": "per_guest", "label": "Price per guest (Rp)" }
+      ]
+    }
+  ]
+}
+{% endschema %}

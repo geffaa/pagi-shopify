@@ -1,0 +1,15 @@
+{
+  "name": "menu-addons",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typegen": "shopify app function typegen",
+    "build": "shopify app function build",
+    "preview": "shopify app function run",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "@shopify/shopify_function": "2.0.1"
+  }
+}

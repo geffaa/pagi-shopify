@@ -1,0 +1,18 @@
+<section class="section">
+  <div class="container stack" style="--gap:24px">
+    <div class="stack" style="--gap:8px">
+      <h1 class="d-1">{{ collection.title | escape }}</h1>
+      {%- if collection.description != blank -%}<div class="rte muted lead">{{ collection.description }}</div>{%- endif -%}
+    </div>
+    {%- paginate collection.products by 24 -%}
+      <div class="dish-grid">
+        {%- for product in collection.products -%}{% render 'dish-card', product: product %}{%- endfor -%}
+      </div>
+      {{ paginate | default_pagination }}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collection", "settings": [] }
+{% endschema %}

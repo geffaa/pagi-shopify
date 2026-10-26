@@ -1,0 +1,32 @@
+{%- comment -%}
+  Pickup or delivery, and when. Saved as cart attributes (fulfilment, pickup_slot), which the
+  pickup-slot Validation checks at checkout and the kitchen board groups by. Times come from
+  the app proxy, so they reflect what the kitchen has left right now.
+  - has_dish
+{%- endcomment -%}
+{%- assign fulfilment = cart.attributes.fulfilment | default: 'pickup' -%}
+{%- if has_dish -%}
+  <fulfilment-picker class="fulfil" data-fulfilment="{{ fulfilment }}" data-slot="{{ cart.attributes.pickup_slot | escape }}">
+    <p class="small fulfil__q">{{ 'cart.how' | t }}</p>
+    <div class="seg" role="radiogroup">
+      <label class="seg__opt">
+        <input type="radio" name="fulfilment" value="pickup" {% if fulfilment == 'pickup' %}checked{% endif %}>
+        <span>{% render 'icon', name: 'store' %}<b>{{ 'cart.pickup' | t }}</b><small>{{ 'cart.pickup_sub' | t }}</small></span>
+      </label>
+      <label class="seg__opt">
+        <input type="radio" name="fulfilment" value="delivery" {% if fulfilment == 'delivery' %}checked{% endif %}>
+        <span>{% render 'icon', name: 'bike' %}<b>{{ 'cart.delivery' | t }}</b><small>{{ 'cart.delivery_sub' | t }}</small></span>
+      </label>
+    </div>
+    <p class="xsmall muted" data-delivery-note {% if fulfilment != 'delivery' %}hidden{% endif %}>{{ settings.delivery_note }}</p>
+    <p class="small fulfil__q">
+      <span data-when="pickup" {% if fulfilment == 'delivery' %}hidden{% endif %}>{{ 'cart.time_pickup' | t }}</span>
+      <span data-when="delivery" {% if fulfilment != 'delivery' %}hidden{% endif %}>{{ 'cart.time_delivery' | t }}</span>
+    </p>
+    <div class="days" data-days role="tablist"></div>
+    <div class="times" data-times><p class="xsmall muted">{{ 'cart.loading' | t }}</p></div>
+    <p class="xsmall fulfil__msg" data-slot-msg role="status"></p>
+  </fulfilment-picker>
+{%- elsif cart.item_count > 0 -%}
+  <p class="xsmall muted">{{ 'cart.no_slot_needed' | t }}</p>
+{%- endif -%}

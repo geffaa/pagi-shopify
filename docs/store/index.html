@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opening the store…</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:16px/1.5 system-ui,sans-serif;background:#FFF8EE;color:#2A1E16;text-align:center;padding:24px}</style>
+</head><body><div id="m">Opening the store…</div>
+<script>
+  // The store is rendered in your browser by a Service Worker running the theme's preview renderer.
+  // Once it controls this page, reload so the worker answers the request.
+  const m = document.getElementById('m');
+  // Arriving from 404.html with ?next=/pagi-shopify/store/products/x: go there once the worker runs.
+  const next = new URLSearchParams(location.search).get('next');
+  const go = () => (next ? location.replace(next) : location.reload());
+  if (!('serviceWorker' in navigator)) m.textContent = 'This demo needs a browser with Service Worker support.';
+  else if (navigator.serviceWorker.controller) location.replace(next || './?' + Date.now());
+  else navigator.serviceWorker.register('./sw.js', { type: 'module', scope: './' })
+    .then(() => navigator.serviceWorker.ready)
+    .then(() => new Promise((r) => (navigator.serviceWorker.controller ? r() : navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }))))
+    .then(go)
+    .catch((e) => (m.textContent = 'Could not start the demo: ' + e.message));
+</script></body></html>

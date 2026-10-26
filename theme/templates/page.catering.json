@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-catering",
+      "settings": {
+        "eyebrow": "Villas, retreats, offsites",
+        "heading": "Brunch for the whole villa",
+        "text": "From 15 to 120 guests, set up and cleared by our team anywhere between Canggu and Seseh.",
+        "endpoint": "/apps/pagi/catering",
+        "min_days": 3,
+        "min_guests": 15
+      },
+      "blocks": {
+        "p1": {
+          "type": "package",
+          "settings": {
+            "key": "brunch-board",
+            "title": "Brunch boards",
+            "text": "Sourdough, eggs two ways, smashed avo, roast vegetables, fruit and pastries on shared boards.",
+            "per_guest": 145000
+          }
+        },
+        "p2": {
+          "type": "package",
+          "settings": {
+            "key": "coffee-cart",
+            "title": "Coffee cart",
+            "text": "A barista and our espresso cart for three hours: flat whites, iced lattes, matcha and jamu.",
+            "per_guest": 65000
+          }
+        },
+        "p3": {
+          "type": "package",
+          "settings": {
+            "key": "brunch-and-coffee",
+            "title": "Brunch boards + coffee cart",
+            "text": "Both, for villa mornings, retreats and team offsites.",
+            "per_guest": 195000
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

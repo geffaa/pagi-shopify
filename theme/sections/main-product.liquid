@@ -1,0 +1,139 @@
+{%- comment -%}
+  Dish page and product page in one section.
+  - Dishes (type "Menu") get the modifier builder from the pagi.modifiers metafield. Free choices
+    become line properties named after the group; paid add-ons also go into `_mods` as variant
+    IDs, which the menu-addons Cart Transform turns into priced components of the line.
+  - Beans and gift cards get a plain variant picker.
+  Group titles stay in English in line properties so the kitchen reads one language.
+{%- endcomment -%}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign is_dish = false
+  if product.type == 'Menu'
+    assign is_dish = true
+  endif
+  assign groups = product.metafields.pagi.modifiers.value.groups
+  assign local = false
+  if request.locale.iso_code == 'id'
+    assign local = true
+  endif
+-%}
+{{ 'product.css' | asset_url | stylesheet_tag }}
+<section class="container product">
+  <div class="product__media">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 1200 | image_tag: widths: '500, 800, 1200', sizes: '(min-width: 900px) 50vw, 100vw', preload: true, alt: product.title }}
+    {%- endif -%}
+  </div>
+
+  <div class="product__info stack" style="--gap:18px">
+    <div class="stack" style="--gap:8px">
+      <h1 class="d-1">{{ product.title | escape }}</h1>
+      {% render 'diet-badges', product: product %}
+    </div>
+    <div class="rte muted">{{ product.description }}</div>
+
+    {%- if is_dish -%}
+      <dish-form data-base="{{ variant.price }}">
+        {%- form 'product', product, id: 'dish-form', novalidate: 'novalidate' -%}
+          <input type="hidden" name="id" value="{{ variant.id }}">
+          {%- for g in groups -%}
+            {%- liquid
+              assign g_title = g.title
+              if local and g.title_id != blank
+                assign g_title = g.title_id
+              endif
+              if g.min > 0 and g.min == g.max
+                if g.min == 1
+                  assign rule = 'dish.choose_one' | t
+                else
+                  assign rule = 'dish.choose_exactly' | t: count: g.min
+                endif
+              else
+                assign rule = 'dish.up_to' | t: count: g.max
+              endif
+            -%}
+            <fieldset class="group" data-group data-min="{{ g.min }}" data-max="{{ g.max }}" data-name="{{ g.title | escape }}" data-label="{{ g_title | escape }}">
+              <legend class="group__head">
+                <span class="d-3">{{ g_title | escape }}</span>
+                <span class="group__rule xsmall {% if g.min > 0 %}group__rule--req{% endif %}">{{ rule }}{% if g.min > 0 %} · {{ 'dish.required' | t }}{% endif %}</span>
+              </legend>
+              <div class="group__opts">
+                {%- for o in g.options -%}
+                  {%- liquid
+                    assign o_label = o.label
+                    if local and o.label_id != blank
+                      assign o_label = o.label_id
+                    endif
+                    assign o_price = o.price | times: 100
+                  -%}
+                  <label class="opt">
+                    <input
+                      type="{% if g.max == 1 %}radio{% else %}checkbox{% endif %}"
+                      name="choice-{{ g.key }}"
+                      value="{{ o.label | escape }}"
+                      data-price="{{ o_price }}"
+                      {% if o.variant %}data-variant="{{ o.variant }}"{% endif %}
+                      {% if g.max == 1 and g.min == 1 and forloop.first %}checked{% endif %}
+                    >
+                    <span class="opt__label">{{ o_label | escape }}</span>
+                    {%- if o.price > 0 -%}<span class="opt__price small muted">+{{ o_price | money }}</span>{%- endif -%}
+                  </label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+          {%- endfor -%}
+
+          <label class="field">
+            <span class="small">{{ 'dish.note' | t }}</span>
+            <textarea name="properties[Note]" rows="2" maxlength="200" placeholder="{{ 'dish.note_placeholder' | t }}"></textarea>
+          </label>
+
+          <div class="buy">
+            <div class="qty" data-qty-wrap>
+              <button type="button" data-step="-1" aria-label="-">{% render 'icon', name: 'minus' %}</button>
+              <input type="number" name="quantity" value="1" min="1" max="20" inputmode="numeric" aria-label="{{ 'dish.quantity' | t }}">
+              <button type="button" data-step="1" aria-label="+">{% render 'icon', name: 'plus' %}</button>
+            </div>
+            <button type="submit" class="btn btn--lg buy__btn">
+              <span>{{ 'dish.add_to_order' | t }}</span><span data-total>{{ variant.price | money }}</span>
+            </button>
+          </div>
+          <p class="error small" data-error role="alert" hidden></p>
+          <p class="xsmall muted hint">{% render 'icon', name: 'clock' %}<span>{{ 'dish.pickup_info' | t }}</span></p>
+        {%- endform -%}
+      </dish-form>
+      <script src="{{ 'dish.js' | asset_url }}" type="module"></script>
+    {%- else -%}
+      <product-form>
+        {%- form 'product', product, id: 'product-form' -%}
+          {%- unless product.has_only_default_variant -%}
+            <fieldset class="group">
+              <legend class="group__head"><span class="d-3">{% if product.gift_card? %}{{ 'product.amount' | t }}{% else %}{{ 'product.size' | t }}{% endif %}</span></legend>
+              <div class="group__opts">
+                {%- for v in product.variants -%}
+                  <label class="opt">
+                    <input type="radio" name="id" value="{{ v.id }}" data-price="{{ v.price }}" {% if v.id == variant.id %}checked{% endif %} {% unless v.available %}disabled{% endunless %}>
+                    <span class="opt__label">{{ v.title }}</span>
+                    <span class="opt__price small muted">{{ v.price | money }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+          {%- else -%}
+            <input type="hidden" name="id" value="{{ variant.id }}">
+          {%- endunless -%}
+          <div class="buy">
+            <button type="submit" class="btn btn--lg buy__btn"><span>{{ 'product.add' | t }}</span><span data-total>{{ variant.price | money }}</span></button>
+          </div>
+          <p class="error small" data-error role="alert" hidden></p>
+          <p class="xsmall muted">{% if product.gift_card? %}{{ 'product.gift_info' | t }}{% else %}{{ 'product.beans_info' | t }}{% endif %}</p>
+        {%- endform -%}
+      </product-form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Product", "settings": [] }
+{% endschema %}

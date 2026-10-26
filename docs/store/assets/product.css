@@ -1,0 +1,9 @@
+.product { display: grid; gap: 28px; padding-block: clamp(20px, 4vw, 48px) 64px; }
+.product__media img { width: 100%; border-radius: var(--r-lg); background: var(--clay); }
+.product__info form { display: grid; gap: 22px; }
+.buy { display: flex; gap: 12px; align-items: center; position: sticky; bottom: 0; padding-block: 12px; background: var(--paper); z-index: 2; }
+.buy__btn { flex: 1; justify-content: space-between; }
+@media (min-width: 900px) {
+  .product { grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+  .product__media { position: sticky; top: 96px; }
+}

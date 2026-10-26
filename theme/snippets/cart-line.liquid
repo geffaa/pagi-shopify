@@ -1,0 +1,29 @@
+{%- comment -%}
+  One cart line. - item, index (1-based line number)
+  A dish with add-ons is one line: the Cart Transform expands it into the dish plus add-on
+  components, so the price already includes them.
+{%- endcomment -%}
+<div class="line" data-line="{{ index }}" data-key="{{ item.key }}">
+  <a href="{{ item.url }}" class="line__img" tabindex="-1" aria-hidden="true">
+    {%- if item.image -%}{{ item.image | image_url: width: 160 | image_tag: widths: '80, 160', sizes: '64px', alt: '', loading: 'lazy' }}{%- endif -%}
+  </a>
+  <div class="line__main">
+    <a href="{{ item.url }}" class="line__title">{{ item.product.title | escape }}</a>
+    <div class="line__meta xsmall muted">
+      {%- unless item.product.has_only_default_variant -%}<span>{{ item.variant.title }}</span>{%- endunless -%}
+      {%- for p in item.properties -%}
+        {%- assign first_char = p.first | slice: 0 -%}
+        {%- if first_char != '_' and p.last != blank -%}<span>{{ p.first }}: {{ p.last }}</span>{%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="line__actions">
+      <div class="qty qty--sm">
+        <button type="button" data-step="-1" aria-label="{{ 'cart.decrease' | t: product: item.product.title | escape }}">{% render 'icon', name: 'minus' %}</button>
+        <input type="number" min="0" inputmode="numeric" value="{{ item.quantity }}" data-qty aria-label="{{ 'cart.quantity' | t: product: item.product.title | escape }}">
+        <button type="button" data-step="1" aria-label="{{ 'cart.increase' | t: product: item.product.title | escape }}">{% render 'icon', name: 'plus' %}</button>
+      </div>
+      <button type="button" class="xsmall link muted" data-remove>{{ 'cart.remove' | t }}</button>
+    </div>
+  </div>
+  <div class="line__price small">{{ item.final_line_price | money }}</div>
+</div>

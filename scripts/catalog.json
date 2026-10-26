@@ -1,0 +1,617 @@
+{
+  "shop": {
+    "name": "Pagi",
+    "tagline": "Brunch in Pererenan, ready when you are",
+    "address": "Jl. Pantai Pererenan No. 8, Pererenan, Bali",
+    "whatsapp": "+62 812 0000 0000",
+    "timezone": "Asia/Makassar",
+    "currency": "IDR",
+    "hours": {
+      "open": "08:00",
+      "close": "16:00",
+      "kitchen_close": "15:30"
+    },
+    "slot_minutes": 15,
+    "lead_minutes": 20,
+    "days_ahead": 2,
+    "dishes_per_slot": 12,
+    "delivery_radius_km": 5,
+    "tax_note": "Prices include 10% PB1 tax. No service charge on pickup and delivery."
+  },
+  "categories": [
+    {
+      "handle": "brunch-plates",
+      "title": "Brunch plates",
+      "title_id": "Paket brunch"
+    },
+    {
+      "handle": "toasts",
+      "title": "On toast",
+      "title_id": "Roti panggang"
+    },
+    {
+      "handle": "bowls",
+      "title": "Bowls",
+      "title_id": "Bowl"
+    },
+    {
+      "handle": "lunch",
+      "title": "Lunch",
+      "title_id": "Makan siang"
+    },
+    {
+      "handle": "drinks",
+      "title": "Coffee & drinks",
+      "title_id": "Kopi & minuman"
+    }
+  ],
+  "addons": [
+    {
+      "handle": "addon-egg",
+      "title": "Extra egg",
+      "title_id": "Tambah telur",
+      "price": 8000
+    },
+    {
+      "handle": "addon-bacon",
+      "title": "Bacon",
+      "title_id": "Bacon",
+      "price": 25000
+    },
+    {
+      "handle": "addon-salmon",
+      "title": "Smoked salmon",
+      "title_id": "Salmon asap",
+      "price": 35000
+    },
+    {
+      "handle": "addon-avocado",
+      "title": "Avocado",
+      "title_id": "Alpukat",
+      "price": 20000
+    },
+    {
+      "handle": "addon-halloumi",
+      "title": "Grilled halloumi",
+      "title_id": "Halloumi panggang",
+      "price": 28000
+    },
+    {
+      "handle": "addon-tempeh",
+      "title": "Crispy tempeh",
+      "title_id": "Tempe renyah",
+      "price": 15000
+    },
+    {
+      "handle": "addon-gf-bread",
+      "title": "Gluten-free bread",
+      "title_id": "Roti bebas gluten",
+      "price": 15000
+    },
+    {
+      "handle": "addon-oat-milk",
+      "title": "Oat milk",
+      "title_id": "Susu oat",
+      "price": 8000
+    },
+    {
+      "handle": "addon-almond-milk",
+      "title": "Almond milk",
+      "title_id": "Susu almond",
+      "price": 10000
+    },
+    {
+      "handle": "addon-extra-shot",
+      "title": "Extra shot",
+      "title_id": "Tambah shot",
+      "price": 8000
+    },
+    {
+      "handle": "addon-protein",
+      "title": "Plant protein",
+      "title_id": "Protein nabati",
+      "price": 30000
+    },
+    {
+      "handle": "addon-mushroom",
+      "title": "Sautéed mushrooms",
+      "title_id": "Jamur tumis",
+      "price": 18000
+    },
+    {
+      "handle": "addon-beet-hummus",
+      "title": "Beet hummus",
+      "title_id": "Hummus bit",
+      "price": 15000
+    }
+  ],
+  "groups": {
+    "eggs": {
+      "title": "Eggs",
+      "title_id": "Telur",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "label": "Scrambled",
+          "label_id": "Orak-arik"
+        },
+        {
+          "label": "Fried",
+          "label_id": "Ceplok"
+        },
+        {
+          "label": "Poached",
+          "label_id": "Rebus pecah"
+        }
+      ]
+    },
+    "bread": {
+      "title": "Bread",
+      "title_id": "Roti",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "label": "Sourdough",
+          "label_id": "Sourdough"
+        },
+        {
+          "label": "Gluten-free",
+          "label_id": "Bebas gluten",
+          "addon": "addon-gf-bread"
+        }
+      ]
+    },
+    "add_protein": {
+      "title": "Add protein",
+      "title_id": "Tambah protein",
+      "min": 0,
+      "max": 3,
+      "options": [
+        {
+          "addon": "addon-egg"
+        },
+        {
+          "addon": "addon-bacon"
+        },
+        {
+          "addon": "addon-salmon"
+        },
+        {
+          "addon": "addon-halloumi"
+        },
+        {
+          "addon": "addon-tempeh"
+        }
+      ]
+    },
+    "add_greens": {
+      "title": "Add more",
+      "title_id": "Tambah lagi",
+      "min": 0,
+      "max": 3,
+      "options": [
+        {
+          "addon": "addon-avocado"
+        },
+        {
+          "addon": "addon-mushroom"
+        },
+        {
+          "addon": "addon-beet-hummus"
+        }
+      ]
+    },
+    "milk": {
+      "title": "Milk",
+      "title_id": "Susu",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "label": "Full cream",
+          "label_id": "Susu sapi"
+        },
+        {
+          "addon": "addon-oat-milk"
+        },
+        {
+          "addon": "addon-almond-milk"
+        }
+      ]
+    },
+    "coffee_extra": {
+      "title": "Make it stronger",
+      "title_id": "Lebih kuat",
+      "min": 0,
+      "max": 1,
+      "options": [
+        {
+          "addon": "addon-extra-shot"
+        }
+      ]
+    },
+    "bowl_boost": {
+      "title": "Boost it",
+      "title_id": "Tambahan",
+      "min": 0,
+      "max": 2,
+      "options": [
+        {
+          "addon": "addon-protein"
+        },
+        {
+          "addon": "addon-avocado"
+        }
+      ]
+    },
+    "platter_base": {
+      "title": "Choose a base",
+      "title_id": "Pilih dasar",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "label": "Sourdough",
+          "label_id": "Sourdough"
+        },
+        {
+          "label": "Turmeric rice",
+          "label_id": "Nasi kunyit"
+        },
+        {
+          "label": "Gluten-free bread",
+          "label_id": "Roti bebas gluten",
+          "addon": "addon-gf-bread"
+        }
+      ]
+    },
+    "platter_sides": {
+      "title": "Pick three sides",
+      "title_id": "Pilih tiga lauk",
+      "min": 3,
+      "max": 3,
+      "options": [
+        {
+          "label": "Smashed avo",
+          "label_id": "Alpukat hancur"
+        },
+        {
+          "label": "Roast tomato",
+          "label_id": "Tomat panggang"
+        },
+        {
+          "label": "Garlic greens",
+          "label_id": "Sayur bawang putih"
+        },
+        {
+          "label": "Two eggs your way",
+          "label_id": "Dua telur"
+        },
+        {
+          "label": "Sautéed mushrooms",
+          "label_id": "Jamur tumis"
+        },
+        {
+          "label": "Beet hummus",
+          "label_id": "Hummus bit"
+        }
+      ]
+    },
+    "platter_premium": {
+      "title": "Premium extras",
+      "title_id": "Tambahan premium",
+      "min": 0,
+      "max": 3,
+      "options": [
+        {
+          "addon": "addon-bacon"
+        },
+        {
+          "addon": "addon-salmon"
+        },
+        {
+          "addon": "addon-halloumi"
+        }
+      ]
+    }
+  },
+  "menu": [
+    {
+      "handle": "the-pagi-plate",
+      "title": "The Pagi Plate",
+      "title_id": "Piring Pagi",
+      "category": "brunch-plates",
+      "price": 125000,
+      "diet": [],
+      "art": "plate-full",
+      "description": "Two eggs, smoked bacon, roast tomato, sautéed mushrooms, garlic greens and sourdough.",
+      "description_id": "Dua telur, bacon asap, tomat panggang, jamur tumis, sayur bawang putih dan sourdough.",
+      "groups": [
+        "eggs",
+        "bread",
+        "add_protein",
+        "add_greens"
+      ]
+    },
+    {
+      "handle": "green-garden-plate",
+      "title": "Green Garden Plate",
+      "title_id": "Piring Kebun Hijau",
+      "category": "brunch-plates",
+      "price": 115000,
+      "diet": [
+        "vg"
+      ],
+      "art": "plate-green",
+      "description": "Crispy tempeh, smashed avo, beet hummus, garlic greens and turmeric potatoes.",
+      "description_id": "Tempe renyah, alpukat hancur, hummus bit, sayur bawang putih dan kentang kunyit.",
+      "groups": [
+        "bread",
+        "add_greens"
+      ]
+    },
+    {
+      "handle": "build-your-platter",
+      "title": "Build your platter",
+      "title_id": "Racik platter sendiri",
+      "category": "brunch-plates",
+      "price": 95000,
+      "diet": [
+        "v"
+      ],
+      "art": "platter",
+      "featured": true,
+      "description": "A base, three sides, and anything extra you like. Made for sharing or very hungry mornings.",
+      "description_id": "Satu dasar, tiga lauk, dan tambahan sesukamu. Untuk berbagi atau pagi yang sangat lapar.",
+      "groups": [
+        "platter_base",
+        "platter_sides",
+        "platter_premium"
+      ]
+    },
+    {
+      "handle": "avo-smash",
+      "title": "Avo Smash",
+      "title_id": "Alpukat Hancur",
+      "category": "toasts",
+      "price": 85000,
+      "diet": [
+        "v"
+      ],
+      "art": "toast-avo",
+      "description": "Smashed avocado, lime, chilli flakes, feta and seeds on sourdough.",
+      "description_id": "Alpukat hancur, jeruk nipis, cabai, feta dan biji-bijian di atas sourdough.",
+      "groups": [
+        "bread",
+        "add_protein"
+      ]
+    },
+    {
+      "handle": "salmon-dill-toast",
+      "title": "Salmon & Dill Toast",
+      "title_id": "Roti Salmon & Dill",
+      "category": "toasts",
+      "price": 98000,
+      "diet": [],
+      "art": "toast-salmon",
+      "description": "Smoked salmon, whipped cream cheese, pickled shallot and dill.",
+      "description_id": "Salmon asap, krim keju kocok, bawang acar dan dill.",
+      "groups": [
+        "bread",
+        "add_protein"
+      ]
+    },
+    {
+      "handle": "mushroom-miso-toast",
+      "title": "Mushroom Miso Toast",
+      "title_id": "Roti Jamur Miso",
+      "category": "toasts",
+      "price": 88000,
+      "diet": [
+        "vg"
+      ],
+      "art": "toast-mushroom",
+      "description": "Shimeji and oyster mushrooms in miso butter, chives and sesame.",
+      "description_id": "Jamur shimeji dan tiram dengan mentega miso, kucai dan wijen.",
+      "groups": [
+        "bread",
+        "add_protein"
+      ]
+    },
+    {
+      "handle": "dragon-fruit-bowl",
+      "title": "Dragon Fruit Bowl",
+      "title_id": "Bowl Buah Naga",
+      "category": "bowls",
+      "price": 85000,
+      "diet": [
+        "vg",
+        "gf"
+      ],
+      "art": "bowl-pink",
+      "description": "Dragon fruit and banana, topped with granola, coconut, kiwi and passionfruit.",
+      "description_id": "Buah naga dan pisang dengan granola, kelapa, kiwi dan markisa.",
+      "groups": [
+        "bowl_boost"
+      ]
+    },
+    {
+      "handle": "green-machine-bowl",
+      "title": "Green Machine Bowl",
+      "title_id": "Bowl Hijau",
+      "category": "bowls",
+      "price": 88000,
+      "diet": [
+        "vg",
+        "gf"
+      ],
+      "art": "bowl-green",
+      "description": "Spinach, mango and moringa, with granola, cacao nibs and bee pollen.",
+      "description_id": "Bayam, mangga dan kelor, dengan granola, cacao nibs dan bee pollen.",
+      "groups": [
+        "bowl_boost"
+      ]
+    },
+    {
+      "handle": "nourish-bowl",
+      "title": "Nourish Bowl",
+      "title_id": "Bowl Bergizi",
+      "category": "lunch",
+      "price": 110000,
+      "diet": [
+        "vg",
+        "gf"
+      ],
+      "art": "bowl-grain",
+      "description": "Red rice, roast pumpkin, edamame, pickled cabbage and peanut sambal.",
+      "description_id": "Nasi merah, labu panggang, edamame, kubis acar dan sambal kacang.",
+      "groups": [
+        "add_protein",
+        "add_greens"
+      ]
+    },
+    {
+      "handle": "chicken-pesto-ciabatta",
+      "title": "Chicken Pesto Ciabatta",
+      "title_id": "Ciabatta Ayam Pesto",
+      "category": "lunch",
+      "price": 105000,
+      "diet": [],
+      "art": "sandwich",
+      "description": "Grilled chicken, basil pesto, mozzarella and rocket in toasted ciabatta.",
+      "description_id": "Ayam panggang, pesto kemangi, mozzarella dan rocket dalam ciabatta panggang.",
+      "groups": [
+        "add_greens"
+      ]
+    },
+    {
+      "handle": "flat-white",
+      "title": "Flat white",
+      "title_id": "Flat white",
+      "category": "drinks",
+      "price": 38000,
+      "diet": [
+        "v"
+      ],
+      "art": "cup-flat-white",
+      "description": "Double ristretto of our Kintamani house blend with silky milk.",
+      "description_id": "Double ristretto racikan Kintamani kami dengan susu lembut.",
+      "groups": [
+        "milk",
+        "coffee_extra"
+      ]
+    },
+    {
+      "handle": "iced-matcha-latte",
+      "title": "Iced matcha latte",
+      "title_id": "Matcha latte dingin",
+      "category": "drinks",
+      "price": 52000,
+      "diet": [
+        "v"
+      ],
+      "art": "cup-matcha",
+      "description": "Ceremonial-grade matcha whisked to order, over ice.",
+      "description_id": "Matcha kualitas seremonial dikocok saat dipesan, dengan es.",
+      "groups": [
+        "milk"
+      ]
+    },
+    {
+      "handle": "jamu-shot",
+      "title": "Jamu shot",
+      "title_id": "Jamu",
+      "category": "drinks",
+      "price": 35000,
+      "diet": [
+        "vg",
+        "gf"
+      ],
+      "art": "cup-jamu",
+      "description": "Fresh turmeric, ginger, tamarind and palm sugar, pressed every morning.",
+      "description_id": "Kunyit, jahe, asam dan gula aren segar, diperas setiap pagi.",
+      "groups": []
+    }
+  ],
+  "beans": [
+    {
+      "handle": "kintamani-house-blend",
+      "title": "Kintamani house blend",
+      "title_id": "Racikan Kintamani",
+      "art": "beans-kintamani",
+      "description": "The coffee in every flat white we pour. Natural-process arabica from Kintamani: brown sugar, orange, cocoa.",
+      "description_id": "Kopi di setiap flat white kami. Arabika proses natural dari Kintamani: gula merah, jeruk, kakao.",
+      "variants": [
+        {
+          "size": "250 g",
+          "price": 145000,
+          "grams": 250
+        },
+        {
+          "size": "1 kg",
+          "price": 495000,
+          "grams": 1000
+        }
+      ]
+    },
+    {
+      "handle": "flores-bajawa",
+      "title": "Flores Bajawa single origin",
+      "title_id": "Single origin Flores Bajawa",
+      "art": "beans-bajawa",
+      "description": "Washed arabica from the Bajawa highlands: jasmine, lime, black tea.",
+      "description_id": "Arabika proses washed dari dataran tinggi Bajawa: melati, jeruk nipis, teh hitam.",
+      "variants": [
+        {
+          "size": "250 g",
+          "price": 165000,
+          "grams": 250
+        }
+      ]
+    }
+  ],
+  "gift_card": {
+    "handle": "pagi-gift-card",
+    "title": "Pagi gift card",
+    "title_id": "Kartu hadiah Pagi",
+    "art": "gift-card",
+    "denominations": [
+      100000,
+      250000,
+      500000
+    ]
+  },
+  "catering": {
+    "min_days_ahead": 3,
+    "min_guests": 15,
+    "max_guests": 120,
+    "packages": [
+      {
+        "key": "brunch-board",
+        "title": "Brunch boards",
+        "title_id": "Papan brunch",
+        "per_guest": 145000,
+        "description": "Sourdough, eggs two ways, smashed avo, roast vegetables, fruit and pastries on shared boards.",
+        "description_id": "Sourdough, telur dua cara, alpukat, sayur panggang, buah dan pastry di papan bersama."
+      },
+      {
+        "key": "coffee-cart",
+        "title": "Coffee cart",
+        "title_id": "Gerobak kopi",
+        "per_guest": 65000,
+        "description": "A barista and our espresso cart for three hours: flat whites, iced lattes, matcha and jamu.",
+        "description_id": "Barista dan gerobak espresso kami selama tiga jam: flat white, es latte, matcha dan jamu."
+      },
+      {
+        "key": "brunch-and-coffee",
+        "title": "Brunch boards + coffee cart",
+        "title_id": "Papan brunch + gerobak kopi",
+        "per_guest": 195000,
+        "description": "Both, for villa mornings, retreats and team offsites.",
+        "description_id": "Keduanya, untuk pagi di vila, retreat dan acara tim."
+      }
+    ]
+  }
+}

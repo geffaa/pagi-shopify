@@ -1,0 +1,27 @@
+# App that ships both Functions and the app proxy for pagi-ops. Deploy with `shopify app deploy`.
+client_id = "REPLACE_WITH_CLIENT_ID"
+name = "pagi"
+application_url = "https://example.com"
+embedded = false
+extension_directories = ["extensions/*"]
+
+[access_scopes]
+# Seed: products, collections, pages, translations, the Functions. Ops: orders (tags, webhooks), draft orders, shop metafield.
+scopes = "write_products,write_publications,write_online_store_pages,write_files,write_translations,write_locales,write_cart_transforms,write_validations,read_orders,write_orders,write_draft_orders"
+
+[webhooks]
+api_version = "2026-07"
+
+  [[webhooks.subscriptions]]
+  topics = ["orders/create", "orders/cancelled", "app/uninstalled"]
+  uri = "https://pagi-ops.example.com/webhooks"
+
+  [[webhooks.subscriptions]]
+  compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
+  uri = "https://pagi-ops.example.com/webhooks"
+
+# The storefront calls /apps/pagi/slots and /apps/pagi/catering; Shopify signs and forwards them.
+[app_proxy]
+url = "https://pagi-ops.example.com/proxy"
+subpath = "pagi"
+prefix = "apps"

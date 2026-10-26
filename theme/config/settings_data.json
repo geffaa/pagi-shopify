@@ -1,0 +1,25 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "wordmark": "pagi",
+      "color_paper": "#FFF8EE",
+      "color_ink": "#2A1E16",
+      "color_muted": "#6F5E50",
+      "color_line": "#EADBC8",
+      "color_yolk": "#F2A93B",
+      "color_leaf": "#5F7F45",
+      "timezone": "Asia/Makassar",
+      "hours_open": "08:00",
+      "hours_close": "16:00",
+      "kitchen_close": "15:30",
+      "slots_endpoint": "/apps/pagi/slots",
+      "delivery_note": "Within 5 km of Pererenan. The delivery fee is added at checkout from your address.",
+      "tax_note": "Prices include 10% PB1 tax. No service charge.",
+      "address": "Jl. Pantai Pererenan No. 8, Pererenan, Bali",
+      "whatsapp": "6281200000000",
+      "maps_url": "https://maps.google.com/?q=Pererenan+Bali",
+      "instagram": "pagi.bali"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+query CartValidationsGenerateRunInput {
+  cart {
+    fulfilment: attribute(key: "fulfilment") {
+      value
+    }
+    slot: attribute(key: "pickup_slot") {
+      value
+    }
+    lines {
+      quantity
+      mods: attribute(key: "_mods") {
+        value
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          product {
+            title
+            productType
+            modifiers: metafield(namespace: "pagi", key: "modifiers") {
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+  shop {
+    localTime {
+      date
+    }
+    slotState: metafield(namespace: "pagi", key: "slot_state") {
+      value
+    }
+  }
+  validation {
+    config: metafield(namespace: "$app", key: "function-configuration") {
+      value
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{%- comment -%}
+  Setting-driven tokens, inline so they exist before base.css. The fallback serif is
+  metric-adjusted so the swap to Fraunces doesn't move the layout.
+{%- endcomment -%}
+<style>
+  @font-face {
+    font-family: 'Fraunces';
+    src: url('{{ 'fraunces-soft.woff2' | asset_url }}') format('woff2');
+    font-weight: 100 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Fraunces Fallback';
+    src: local('Georgia'), local('Times New Roman');
+    size-adjust: 104%;
+    ascent-override: 92%;
+    descent-override: 24%;
+    line-gap-override: 0%;
+  }
+  :root {
+    --paper: {{ settings.color_paper }};
+    --ink: {{ settings.color_ink }};
+    --muted: {{ settings.color_muted }};
+    --line: {{ settings.color_line }};
+    --yolk: {{ settings.color_yolk }};
+    --leaf: {{ settings.color_leaf }};
+    --ink-rgb: {{ settings.color_ink.red }}, {{ settings.color_ink.green }}, {{ settings.color_ink.blue }};
+  }
+</style>

@@ -1,0 +1,120 @@
+{
+  "general": {
+    "close": "Tutup",
+    "error": "Terjadi kesalahan. Silakan coba lagi.",
+    "skip": "Langsung ke konten",
+    "language": "Bahasa",
+    "view_all": "Lihat semua"
+  },
+  "header": {
+    "menu": "Menu",
+    "cart": {
+      "one": "Pesanan, {{ count }} item",
+      "other": "Pesanan, {{ count }} item"
+    },
+    "order_now": "Pesan sekarang",
+    "status_open": "Dapur buka · pesanan terakhir {{ time }}",
+    "status_soon": "Buka pukul {{ time }}",
+    "status_closed": "Sudah tutup · pesan untuk besok"
+  },
+  "home": {
+    "how_title": "Tanpa antre",
+    "menu_title": "Menu",
+    "menu_lead": "Semua dimasak saat dipesan. Pilih telur, roti, dan topping-nya."
+  },
+  "dish": {
+    "add": "Tambah",
+    "add_to_order": "Tambah ke pesanan",
+    "choose": "Pilih",
+    "required": "Wajib",
+    "optional": "Opsional",
+    "choose_one": "Pilih 1",
+    "choose_exactly": "Pilih {{ count }}",
+    "up_to": "Maksimal {{ count }}",
+    "need": "Pilih {{ count }} untuk {{ group }}.",
+    "too_many": "Maksimal {{ count }} untuk {{ group }}.",
+    "note": "Catatan untuk dapur",
+    "note_placeholder": "Alergi, tanpa cabai, saus terpisah…",
+    "customise": "Atur pesanan",
+    "from": "Mulai {{ price }}",
+    "quantity": "Jumlah",
+    "pickup_info": "Ambil di kasir atau diantar dalam radius 5 km. Waktunya dipilih di pesanan.",
+    "diet": {
+      "v": "Vegetarian",
+      "vg": "Vegan",
+      "gf": "Bebas gluten"
+    }
+  },
+  "product": {
+    "add": "Tambah ke pesanan",
+    "size": "Ukuran",
+    "amount": "Nominal",
+    "beans_info": "Disangrai setiap minggu. Dikirim ke seluruh Indonesia, atau ambil sekalian brunch.",
+    "gift_info": "Dikirim lewat email setelah checkout. Bisa dipakai online atau di kasir."
+  },
+  "cart": {
+    "title": "Pesanan kamu",
+    "empty": "Belum ada pesanan",
+    "empty_text": "Mulai dengan satu piring, bowl, atau flat white.",
+    "browse": "Lihat menu",
+    "remove": "Hapus",
+    "increase": "Tambah satu {{ product }}",
+    "decrease": "Kurangi satu {{ product }}",
+    "quantity": "Jumlah {{ product }}",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "added": "Ditambahkan ke pesanan",
+    "how": "Mau diambil atau diantar?",
+    "pickup": "Ambil sendiri",
+    "pickup_sub": "Di kasir, tanpa antre",
+    "delivery": "Diantar",
+    "delivery_sub": "Radius 5 km",
+    "time_pickup": "Waktu ambil",
+    "time_delivery": "Waktu antar",
+    "loading": "Mengecek dapur…",
+    "slots_error": "Waktu tidak bisa dimuat. Cek koneksi lalu coba lagi.",
+    "today": "Hari ini",
+    "tomorrow": "Besok",
+    "left": {
+      "one": "sisa {{ count }}",
+      "other": "sisa {{ count }}"
+    },
+    "full": "Penuh",
+    "no_slots": "Tidak ada waktu tersisa di hari ini.",
+    "choose_time": "Pilih waktu untuk checkout",
+    "slot_gone": "Waktu itu baru saja penuh. Silakan pilih yang lain.",
+    "ready_at": "Siap pukul {{ time }}",
+    "no_slot_needed": "Biji kopi dikirim dan kartu hadiah lewat email, jadi tidak perlu pilih waktu.",
+    "retry": "Coba lagi"
+  },
+  "catering": {
+    "title": "Katering",
+    "packages": "Paket",
+    "per_guest": "{{ price }} per tamu",
+    "form_title": "Minta penawaran",
+    "name": "Nama",
+    "email": "Email",
+    "phone": "Nomor WhatsApp",
+    "date": "Tanggal acara",
+    "guests": "Jumlah tamu",
+    "package": "Paket",
+    "notes": "Ada yang perlu kami tahu?",
+    "notes_placeholder": "Alamat vila, kebutuhan diet, jam acara…",
+    "submit": "Kirim permintaan",
+    "estimate": "Perkiraan: {{ amount }}",
+    "terms": "Kami balas dalam sehari dengan penawaran. Konfirmasi dengan membayar DP 50% lewat checkout kami."
+  },
+  "footer": {
+    "hours": "Jam buka",
+    "daily": "Setiap hari",
+    "kitchen": "Dapur sampai {{ time }}",
+    "find": "Lokasi",
+    "directions": "Petunjuk arah",
+    "whatsapp": "Chat WhatsApp",
+    "tax": "Harga sudah termasuk pajak PB1 10%."
+  },
+  "404": {
+    "title": "Halaman ini tidak ada di menu",
+    "back": "Kembali ke menu"
+  }
+}

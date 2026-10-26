@@ -1,0 +1,32 @@
+<section class="section steps">
+  <div class="container">
+    <h2 class="d-2">{{ section.settings.heading | escape }}</h2>
+    <ol class="steps__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="steps__item" {{ block.shopify_attributes }}>
+          <span class="steps__n">{{ forloop.index }}</span>
+          <h3 class="d-3">{{ block.settings.title | escape }}</h3>
+          <p class="muted small">{{ block.settings.text | escape }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Steps",
+  "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Skip the queue" }],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Steps" }]
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="stack" style="--gap:12px">
+      <span class="wordmark wordmark--lg">{% render 'icon', name: 'sun' %}{{ settings.wordmark }}</span>
+      <p class="muted small">{{ section.settings.blurb }}</p>
+    </div>
+    <div class="stack" style="--gap:6px">
+      <p class="eyebrow">{{ 'footer.hours' | t }}</p>
+      <p>{{ 'footer.daily' | t }} · {{ settings.hours_open }}–{{ settings.hours_close }}</p>
+      <p class="muted small">{{ 'footer.kitchen' | t: time: settings.kitchen_close }}</p>
+    </div>
+    <div class="stack" style="--gap:6px">
+      <p class="eyebrow">{{ 'footer.find' | t }}</p>
+      <p>{{ settings.address }}</p>
+      <p class="footer__links small">
+        {%- if settings.maps_url != blank -%}<a href="{{ settings.maps_url }}" rel="noopener" target="_blank">{% render 'icon', name: 'pin' %}{{ 'footer.directions' | t }}</a>{%- endif -%}
+        <a href="https://wa.me/{{ settings.whatsapp }}" rel="noopener" target="_blank">{% render 'icon', name: 'chat' %}{{ 'footer.whatsapp' | t }}</a>
+      </p>
+    </div>
+    <nav class="stack" style="--gap:6px" aria-label="Footer">
+      {%- for link in section.settings.menu.links -%}<a href="{{ link.url }}" class="small">{{ link.title | escape }}</a>{%- endfor -%}
+    </nav>
+  </div>
+  <div class="container footer__base xsmall muted">
+    <span>© {{ 'now' | date: '%Y' }} {{ shop.name }} · {{ 'footer.tax' | t }}</span>
+    {%- if settings.instagram != blank -%}<a href="https://instagram.com/{{ settings.instagram }}" rel="noopener" target="_blank">@{{ settings.instagram }}</a>{%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "textarea", "id": "blurb", "label": "Blurb", "default": "Brunch and specialty coffee in Pererenan. Order ahead, skip the queue." },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+  ]
+}
+{% endschema %}

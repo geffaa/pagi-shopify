@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Pererenan, Bali",
+        "heading": "Brunch, ready when you are",
+        "text": "Order ahead, pick a time, and collect at the counter. Or have it brought to your villa within 5 km.",
+        "cta": "Order now",
+        "cta_link": "#menu",
+        "ready_hint": "Ready in about 20 minutes",
+        "image": "shopify://shop_images/hero-pagi.png"
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "settings": { "heading": "Skip the queue" },
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Build your plate", "text": "Pick your eggs and bread, add bacon or avocado. Allergies go in the kitchen note." } },
+        "s2": { "type": "step", "settings": { "title": "Choose a time", "text": "Every 15 minutes from 08:00. Times the kitchen can't cook for don't show up." } },
+        "s3": { "type": "step", "settings": { "title": "Collect or relax", "text": "Your name is on the bag at the counter. Or a rider brings it to you." } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "menu": {
+      "type": "menu",
+      "settings": {
+        "heading": "The menu",
+        "text": "Everything is cooked to order. Choose your eggs, your bread and what goes on top.",
+        "categories": ["brunch-plates", "toasts", "bowls", "lunch", "drinks"]
+      }
+    },
+    "beans": {
+      "type": "band",
+      "settings": {
+        "tone": "clay",
+        "eyebrow": "Take the coffee home",
+        "heading": "The beans behind every flat white",
+        "text": "Kintamani and Flores arabica, roasted weekly in Canggu. Ships across Indonesia.",
+        "collection": "beans",
+        "cta": "Shop beans",
+        "link": "/collections/beans",
+        "image": "shopify://shop_images/beans-kintamani.png"
+      }
+    },
+    "gift": {
+      "type": "band",
+      "settings": {
+        "tone": "yolk",
+        "flip": true,
+        "eyebrow": "Gift cards",
+        "heading": "Brunch for someone else",
+        "text": "Sent by email in a minute. Works online and at the counter.",
+        "cta": "Send a gift card",
+        "link": "/products/pagi-gift-card",
+        "image": "shopify://shop_images/gift-card.png"
+      }
+    },
+    "catering": {
+      "type": "band",
+      "settings": {
+        "tone": "leaf",
+        "eyebrow": "Catering",
+        "heading": "Brunch for the whole villa",
+        "text": "Shared boards and a coffee cart for 15 to 120 guests. Ask for a quote; pay the deposit online.",
+        "cta": "Plan an event",
+        "link": "/pages/catering",
+        "image": "shopify://shop_images/platter.png"
+      }
+    }
+  },
+  "order": ["hero", "steps", "menu", "beans", "gift", "catering"]
+}
