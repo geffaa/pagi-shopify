@@ -315,6 +315,41 @@
           "addon": "addon-halloumi"
         }
       ]
+    },
+    "benny": {
+      "title": "Choose your benny",
+      "title_id": "Pilih benedict",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "label": "Smoked ham",
+          "label_id": "Ham asap"
+        },
+        {
+          "label": "Spinach & mushroom",
+          "label_id": "Bayam & jamur"
+        },
+        {
+          "addon": "addon-salmon"
+        }
+      ]
+    },
+    "pancake_top": {
+      "title": "Topping",
+      "title_id": "Topping",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "label": "Berries & whipped ricotta",
+          "label_id": "Beri & ricotta kocok"
+        },
+        {
+          "label": "Banana & palm sugar caramel",
+          "label_id": "Pisang & karamel gula aren"
+        }
+      ]
     }
   },
   "menu": [
@@ -326,50 +361,65 @@
       "price": 125000,
       "diet": [],
       "art": "plate-full",
-      "description": "Two eggs, smoked bacon, roast tomato, sautéed mushrooms, garlic greens and sourdough.",
-      "description_id": "Dua telur, bacon asap, tomat panggang, jamur tumis, sayur bawang putih dan sourdough.",
       "groups": [
         "eggs",
         "bread",
         "add_protein",
         "add_greens"
-      ]
+      ],
+      "description": "Two eggs, smoked bacon, roast tomato, sautéed mushrooms, mixed leaves and sourdough.",
+      "description_id": "Dua telur, bacon asap, tomat panggang, jamur tumis, selada campur dan sourdough."
     },
     {
-      "handle": "green-garden-plate",
-      "title": "Green Garden Plate",
-      "title_id": "Piring Kebun Hijau",
+      "handle": "eggs-benedict",
+      "title": "Eggs Benedict",
+      "title_id": "Eggs Benedict",
       "category": "brunch-plates",
       "price": 115000,
-      "diet": [
-        "vg"
-      ],
-      "art": "plate-green",
-      "description": "Crispy tempeh, smashed avo, beet hummus, garlic greens and turmeric potatoes.",
-      "description_id": "Tempe renyah, alpukat hancur, hummus bit, sayur bawang putih dan kentang kunyit.",
+      "diet": [],
+      "art": "eggs-benedict",
       "groups": [
-        "bread",
+        "benny",
         "add_greens"
-      ]
+      ],
+      "description": "Two poached eggs on a toasted muffin with hollandaise and charred asparagus.",
+      "description_id": "Dua telur poached di atas muffin panggang dengan hollandaise dan asparagus bakar."
     },
     {
       "handle": "build-your-platter",
       "title": "Build your platter",
       "title_id": "Racik platter sendiri",
       "category": "brunch-plates",
-      "price": 95000,
+      "price": 145000,
       "diet": [
         "v"
       ],
       "art": "platter",
-      "featured": true,
-      "description": "A base, three sides, and anything extra you like. Made for sharing or very hungry mornings.",
-      "description_id": "Satu dasar, tiga lauk, dan tambahan sesukamu. Untuk berbagi atau pagi yang sangat lapar.",
       "groups": [
         "platter_base",
         "platter_sides",
         "platter_premium"
-      ]
+      ],
+      "featured": true,
+      "description": "A base, three sides and fresh orange juice. Made for sharing or very hungry mornings.",
+      "description_id": "Satu dasar, tiga lauk dan jus jeruk segar. Untuk berbagi atau pagi yang sangat lapar."
+    },
+    {
+      "handle": "ricotta-pancakes",
+      "title": "Ricotta Pancakes",
+      "title_id": "Pancake Ricotta",
+      "category": "brunch-plates",
+      "price": 95000,
+      "diet": [
+        "v"
+      ],
+      "art": "pancakes",
+      "groups": [
+        "pancake_top",
+        "add_protein"
+      ],
+      "description": "Three fluffy ricotta pancakes, cultured butter and your choice of topping.",
+      "description_id": "Tiga pancake ricotta lembut, mentega dan topping pilihanmu."
     },
     {
       "handle": "avo-smash",
@@ -381,49 +431,50 @@
         "v"
       ],
       "art": "toast-avo",
-      "description": "Smashed avocado, lime, chilli flakes, feta and seeds on sourdough.",
-      "description_id": "Alpukat hancur, jeruk nipis, cabai, feta dan biji-bijian di atas sourdough.",
       "groups": [
         "bread",
         "add_protein"
-      ]
+      ],
+      "description": "Smashed avocado, soft-boiled egg, toasted seeds and lime on sourdough.",
+      "description_id": "Alpukat hancur, telur setengah matang, biji panggang dan jeruk nipis di atas sourdough."
     },
     {
       "handle": "salmon-dill-toast",
-      "title": "Salmon & Dill Toast",
-      "title_id": "Roti Salmon & Dill",
+      "title": "Smoked Salmon Toast",
+      "title_id": "Roti Salmon Asap",
       "category": "toasts",
-      "price": 98000,
+      "price": 110000,
       "diet": [],
       "art": "toast-salmon",
-      "description": "Smoked salmon, whipped cream cheese, pickled shallot and dill.",
-      "description_id": "Salmon asap, krim keju kocok, bawang acar dan dill.",
       "groups": [
         "bread",
         "add_protein"
-      ]
-    },
-    {
-      "handle": "mushroom-miso-toast",
-      "title": "Mushroom Miso Toast",
-      "title_id": "Roti Jamur Miso",
-      "category": "toasts",
-      "price": 88000,
-      "diet": [
-        "vg"
       ],
-      "art": "toast-mushroom",
-      "description": "Shimeji and oyster mushrooms in miso butter, chives and sesame.",
-      "description_id": "Jamur shimeji dan tiram dengan mentega miso, kucai dan wijen.",
-      "groups": [
-        "bread",
-        "add_protein"
-      ]
+      "description": "Smoked salmon, soft scrambled eggs, dill and crème fraîche on thick toast.",
+      "description_id": "Salmon asap, telur orak-arik lembut, dill dan crème fraîche di atas roti tebal."
     },
     {
-      "handle": "dragon-fruit-bowl",
-      "title": "Dragon Fruit Bowl",
-      "title_id": "Bowl Buah Naga",
+      "handle": "egg-tomato-sourdough",
+      "title": "Egg & Tomato Sourdough",
+      "title_id": "Sourdough Telur & Tomat",
+      "category": "toasts",
+      "price": 75000,
+      "diet": [
+        "v"
+      ],
+      "art": "toast-egg",
+      "groups": [
+        "eggs",
+        "add_protein",
+        "add_greens"
+      ],
+      "description": "A free-range egg, blistered tomatoes and herbs on buttered sourdough.",
+      "description_id": "Telur ayam kampung, tomat panggang dan herba di atas sourdough bermentega."
+    },
+    {
+      "handle": "acai-berry-bowl",
+      "title": "Acai Berry Bowl",
+      "title_id": "Bowl Acai Beri",
       "category": "bowls",
       "price": 85000,
       "diet": [
@@ -431,11 +482,11 @@
         "gf"
       ],
       "art": "bowl-pink",
-      "description": "Dragon fruit and banana, topped with granola, coconut, kiwi and passionfruit.",
-      "description_id": "Buah naga dan pisang dengan granola, kelapa, kiwi dan markisa.",
       "groups": [
         "bowl_boost"
-      ]
+      ],
+      "description": "Acai and mixed berries blended thick, topped with house granola and goji.",
+      "description_id": "Acai dan beri campur yang kental, dengan granola buatan sendiri dan goji."
     },
     {
       "handle": "green-machine-bowl",
@@ -448,91 +499,92 @@
         "gf"
       ],
       "art": "bowl-green",
-      "description": "Spinach, mango and moringa, with granola, cacao nibs and bee pollen.",
-      "description_id": "Bayam, mangga dan kelor, dengan granola, cacao nibs dan bee pollen.",
       "groups": [
         "bowl_boost"
-      ]
+      ],
+      "description": "Spinach, mango and banana, finished with blueberries, mango and pumpkin seeds.",
+      "description_id": "Bayam, mangga dan pisang, dengan blueberry, mangga dan biji labu."
     },
     {
-      "handle": "nourish-bowl",
-      "title": "Nourish Bowl",
-      "title_id": "Bowl Bergizi",
+      "handle": "garden-greens-salad",
+      "title": "Garden Greens Salad",
+      "title_id": "Salad Kebun",
       "category": "lunch",
-      "price": 110000,
+      "price": 90000,
       "diet": [
-        "vg",
-        "gf"
+        "vg"
       ],
-      "art": "bowl-grain",
-      "description": "Red rice, roast pumpkin, edamame, pickled cabbage and peanut sambal.",
-      "description_id": "Nasi merah, labu panggang, edamame, kubis acar dan sambal kacang.",
+      "art": "bowl-salad",
       "groups": [
         "add_protein",
         "add_greens"
-      ]
+      ],
+      "description": "Local leaves, shaved vegetables, toasted seeds and grilled sourdough with lemon dressing.",
+      "description_id": "Sayur daun lokal, sayuran iris, biji panggang dan sourdough bakar dengan dressing lemon."
     },
     {
-      "handle": "chicken-pesto-ciabatta",
-      "title": "Chicken Pesto Ciabatta",
-      "title_id": "Ciabatta Ayam Pesto",
+      "handle": "roast-pepper-ciabatta",
+      "title": "Roast Pepper & Mozzarella Ciabatta",
+      "title_id": "Ciabatta Paprika & Mozzarella",
       "category": "lunch",
-      "price": 105000,
-      "diet": [],
-      "art": "sandwich",
-      "description": "Grilled chicken, basil pesto, mozzarella and rocket in toasted ciabatta.",
-      "description_id": "Ayam panggang, pesto kemangi, mozzarella dan rocket dalam ciabatta panggang.",
+      "price": 95000,
+      "diet": [
+        "v"
+      ],
+      "art": "ciabatta",
       "groups": [
+        "add_protein",
         "add_greens"
-      ]
+      ],
+      "description": "Roast peppers, fresh mozzarella, red onion and rocket in a toasted ciabatta.",
+      "description_id": "Paprika panggang, mozzarella segar, bawang merah dan rocket dalam ciabatta panggang."
     },
     {
       "handle": "flat-white",
-      "title": "Flat white",
-      "title_id": "Flat white",
+      "title": "Flat White",
+      "title_id": "Flat White",
       "category": "drinks",
-      "price": 38000,
+      "price": 40000,
       "diet": [
         "v"
       ],
       "art": "cup-flat-white",
-      "description": "Double ristretto of our Kintamani house blend with silky milk.",
-      "description_id": "Double ristretto racikan Kintamani kami dengan susu lembut.",
       "groups": [
         "milk",
         "coffee_extra"
-      ]
+      ],
+      "description": "Double ristretto of our Kintamani house blend with silky milk.",
+      "description_id": "Double ristretto racikan Kintamani kami dengan susu lembut."
     },
     {
-      "handle": "iced-matcha-latte",
-      "title": "Iced matcha latte",
-      "title_id": "Matcha latte dingin",
+      "handle": "matcha-latte",
+      "title": "Matcha Latte",
+      "title_id": "Matcha Latte",
       "category": "drinks",
-      "price": 52000,
+      "price": 48000,
       "diet": [
         "v"
       ],
       "art": "cup-matcha",
-      "description": "Ceremonial-grade matcha whisked to order, over ice.",
-      "description_id": "Matcha kualitas seremonial dikocok saat dipesan, dengan es.",
       "groups": [
         "milk"
-      ]
+      ],
+      "description": "Ceremonial-grade matcha whisked to order, hot or over ice.",
+      "description_id": "Matcha ceremonial grade dikocok saat dipesan, panas atau dengan es."
     },
     {
-      "handle": "jamu-shot",
-      "title": "Jamu shot",
-      "title_id": "Jamu",
+      "handle": "iced-latte",
+      "title": "Iced Latte",
+      "title_id": "Es Latte",
       "category": "drinks",
-      "price": 35000,
+      "price": 42000,
       "diet": [
-        "vg",
-        "gf"
+        "v"
       ],
-      "art": "cup-jamu",
-      "description": "Fresh turmeric, ginger, tamarind and palm sugar, pressed every morning.",
-      "description_id": "Kunyit, jahe, asam dan gula aren segar, diperas setiap pagi.",
-      "groups": []
+      "art": "cup-iced-latte",
+      "groups": [],
+      "description": "Espresso over ice and fresh milk. Ready in a minute.",
+      "description_id": "Espresso dengan es dan susu segar. Siap dalam semenit."
     }
   ],
   "beans": [
@@ -601,8 +653,8 @@
         "title": "Coffee cart",
         "title_id": "Gerobak kopi",
         "per_guest": 65000,
-        "description": "A barista and our espresso cart for three hours: flat whites, iced lattes, matcha and jamu.",
-        "description_id": "Barista dan gerobak espresso kami selama tiga jam: flat white, es latte, matcha dan jamu."
+        "description": "A barista and our espresso cart for three hours: flat whites, iced lattes and matcha.",
+        "description_id": "Barista dan gerobak espresso kami selama tiga jam: flat white, es latte dan matcha."
       },
       {
         "key": "brunch-and-coffee",

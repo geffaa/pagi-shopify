@@ -5,7 +5,7 @@
       {%- if collection.description != blank -%}<div class="rte muted lead">{{ collection.description }}</div>{%- endif -%}
     </div>
     {%- paginate collection.products by 24 -%}
-      <div class="dish-grid">
+      <div class="collection-grid">
         {%- for product in collection.products -%}{% render 'dish-card', product: product %}{%- endfor -%}
       </div>
       {{ paginate | default_pagination }}

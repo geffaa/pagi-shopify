@@ -13,7 +13,7 @@
   <body>
     <main class="section">
       <div class="container narrow stack center" style="--gap:18px;justify-items:center">
-        <span class="wordmark wordmark--lg">{% render 'icon', name: 'sun' %}{{ settings.wordmark }}</span>
+        <span class="wordmark wordmark--lg">{{ settings.wordmark }}</span>
         <p class="d-1">{{ gift_card.balance | money }}</p>
         {%- if gift_card.expired or gift_card.enabled == false -%}<p class="muted">This gift card is no longer active.</p>{%- endif -%}
         <p class="card" style="font:600 1.4rem/1 ui-monospace,monospace;letter-spacing:.12em">{{ gift_card.code | format_code }}</p>

@@ -2,7 +2,7 @@
 <header class="header">
   <div class="container header__inner">
     <button type="button" class="icon-btn menu-btn" data-open-dialog="nav-drawer" aria-label="{{ 'header.menu' | t }}">{% render 'icon', name: 'menu' %}</button>
-    <a href="{{ routes.root_url }}" class="wordmark" aria-label="{{ shop.name | escape }}">{% render 'icon', name: 'sun' %}{{ settings.wordmark | escape }}</a>
+    <a href="{{ routes.root_url }}" class="wordmark" aria-label="{{ shop.name | escape }}">{{ settings.wordmark | escape }}</a>
     <nav class="nav" aria-label="{{ 'header.menu' | t }}">
       {%- for link in section.settings.menu.links -%}
         <a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title | escape }}</a>
@@ -20,7 +20,7 @@
 
 <dialog class="drawer drawer--left" id="nav-drawer" aria-label="{{ 'header.menu' | t }}">
   <div class="drawer__head">
-    <span class="wordmark">{% render 'icon', name: 'sun' %}{{ settings.wordmark }}</span>
+    <span class="wordmark">{{ settings.wordmark }}</span>
     <button type="button" class="icon-btn" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
   </div>
   <nav class="drawer__body stack" style="--gap:2px">

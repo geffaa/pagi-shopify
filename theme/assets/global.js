@@ -178,7 +178,7 @@ class ProductForm extends HTMLElement {
 }
 customElements.define('product-form', ProductForm);
 
-/** One-tap add for dishes without choices (a jamu shot). */
+/** One-tap add for dishes without choices (an iced latte). */
 class QuickAdd extends HTMLElement {
   connectedCallback() {
     this.addEventListener('click', async () => {

@@ -2,7 +2,7 @@
 
 A Shopify build for **Pagi**, a fictional brunch café in Bali that wants its own online ordering instead of paying a delivery app's commission. Customers build a dish with add-ons, choose **pickup or delivery and a time**, and pay through Shopify. Checkout refuses times the kitchen can't cook for. Orders land on a **kitchen board**, and larger groups request **catering quotes**. The store runs in English and Bahasa Indonesia.
 
-**▶ 86-second demo: [geffaa.github.io/pagi-shopify](https://geffaa.github.io/pagi-shopify/)**
+**▶ 87-second demo: [geffaa.github.io/pagi-shopify](https://geffaa.github.io/pagi-shopify/)**
 
 **🍳 Order from the demo café: [geffaa.github.io/pagi-shopify/store/](https://geffaa.github.io/pagi-shopify/store/)**. The real theme, both Functions and the kitchen board run in your browser. Place an order, then open the kitchen board from the thank-you page.
 
@@ -16,7 +16,7 @@ A Shopify build for **Pagi**, a fictional brunch café in Bali that wants its ow
 | [`lib/`](lib) | Add-on rules and slot maths, shared by both Functions, the backend and the preview | Plain JavaScript |
 | [`ops/`](ops) | Webhooks, slot capacity, kitchen board, catering | Node, Hono, `node:sqlite` |
 | [`scripts/`](scripts) | Seeds a dev store: menu, add-ons, beans, gift card, translations, both Functions | Admin GraphQL API |
-| [`design/`](design) | Draws every food illustration | SVG → PNG via headless Chrome |
+| [`design/`](design) | Crops and colour-grades the public-domain food photos into one consistent set; draws the gift card | Headless Chrome |
 | [`preview/`](preview) | Renders the theme offline, runs the Functions on the preview cart, end-to-end checks | liquidjs, Puppeteer |
 
 ---
@@ -35,7 +35,7 @@ orders/create webhook ──▶ pagi-ops: count dishes per slot, tag the order, 
 ### 1. Dishes with add-ons → Cart Transform Function
 [`sections/main-product.liquid`](theme/sections/main-product.liquid), [`assets/dish.js`](theme/assets/dish.js), [`extensions/menu-addons`](extensions/menu-addons).
 
-- **Choice groups come from a metafield** (`pagi.modifiers`, JSON) written by the seed script: eggs (choose 1), bread (sourdough, or gluten-free for Rp15.000), protein (up to 3), and so on. The page enforces each group's minimum and maximum and shows the running total.
+- **Choice groups come from a metafield** (`pagi.modifiers`, JSON) written by the seed script: eggs (choose 1), bread (sourdough, or gluten-free for Rp15.000), protein (up to 3), the benedict style, the pancake topping, and so on. The page enforces each group's minimum and maximum and shows the running total.
 - **Free choices** become line properties named after the group (`Eggs: Poached`), so they print on the kitchen ticket and the receipt. They stay in English so the kitchen reads one language.
 - **Paid add-ons are hidden products.** Their variant IDs go into the private property `_mods`. The **Cart Transform** expands the dish line into the dish plus its add-ons, so the price is Shopify's, not the theme's, and add-on sales show in reports.
 - An add-on the dish doesn't offer, or too many from one group, is left unexpanded by the Transform and refused by the Validation. Both use the same rules in [`lib/modifiers.js`](lib/modifiers.js).
@@ -66,6 +66,14 @@ orders/create webhook ──▶ pagi-ops: count dishes per slot, tag the order, 
 
 ---
 
+## Design
+
+A photo-led menu in the layout people know from delivery apps: name, description and price on the left, a square photo on the right, sticky category tabs. Sand background, near-black ink and one terracotta accent; Instrument Serif for headings and dish names, Inter for prices, times and buttons. Both fonts are self-hosted with metric-matched fallbacks so the page doesn't shift when they load.
+
+| | |
+|---|---|
+| ![Menu](docs/screenshots/menu.png) | ![Dish](docs/screenshots/dish.png) |
+
 ## Bahasa Indonesia
 
 The `id` locale is enabled and published by the seed script, and every product, add-on and collection gets an Indonesian title and description through `translationsRegister`. Theme strings live in [`locales/id.json`](theme/locales/id.json); section copy is translated in Shopify's Translate & Adapt (the preview emulates that with [`preview/content.id.json`](preview/content.id.json)). Prices are in rupiah and include PB1 tax, as Bali menus do.
@@ -85,7 +93,7 @@ The `id` locale is enabled and published by the seed script, and every product, 
 | Shopify Theme Check | 0 offenses |
 | Function tests | 18: add-on expansion and rejection, missing or malformed slots, past days, hours, the 15-minute grid, closed and full slots, capacity left, configuration from the metafield, broken metafields |
 | Backend tests | 10: HMAC, idempotent orders, capacity published once, cancellation frees a slot, time passing closes slots, signed app proxy, catering → draft order, kitchen board, pausing, privacy redaction |
-| Slot and seed tests | 10: Bali time whatever the server clock, lead time across midnight, catalog consistency, the Validation reading the seeded configuration |
+| Slot and seed tests | 11: Bali time whatever the server clock, lead time across midnight, catalog consistency, every image the theme names exists, the Validation reading the seeded configuration |
 | End-to-end ([`preview/e2e.mjs`](preview/e2e.mjs)) | 12/12, against both the Node preview and the in-browser demo: add-ons and limits, required groups, Cart Transform pricing, slot picker, checkout refusals, placed order on the board, beans-only checkout, catering, language switch, no JS errors |
 
 ## Trade-offs
@@ -122,4 +130,4 @@ npm run theme:dev
 
 In the store admin, set the currency to IDR with taxes included in prices, and turn on local pickup and local delivery (5 km) for the café's location.
 
-Pagi is a fictional café made for this portfolio. The food illustrations are drawn in code by [`design/build.mjs`](design/build.mjs).
+Pagi is a fictional café made for this portfolio. The food photos are public domain (CC0) from rawpixel and StockSnap, found through Openverse and listed in [`design/photos/CREDITS.md`](design/photos/CREDITS.md); [`design/build.mjs`](design/build.mjs) crops them to one shape and gives them one shared colour grade so they read as a single shoot.

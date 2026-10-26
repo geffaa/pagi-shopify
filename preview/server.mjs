@@ -359,7 +359,7 @@ function itemsFrom(b) {
 }
 
 const slotLabel = () => (attributes.pickup_slot ? `${attributes.fulfilment === 'delivery' ? 'Delivery' : 'Pickup'} at ${attributes.pickup_slot.slice(11)}, ${attributes.pickup_slot.slice(0, 10)}` : '');
-const MIME = { '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.woff2': 'font/woff2' };
+const MIME = { '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2' };
 
 createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);

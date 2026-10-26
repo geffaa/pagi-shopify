@@ -11,15 +11,15 @@
 <meta property="og:description" content="Order-ahead pickup and delivery for a café: add-ons via Cart Transform, kitchen-capacity slots via Checkout Validation, kitchen board, EN/ID.">
 <meta property="og:image" content="https://geffaa.github.io/pagi-shopify/poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2213%22 r=%225%22 fill=%22%23F2A93B%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2213%22 r=%225%22 fill=%22%23B5552F%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,100&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400..700&display=swap">
 <style>
   /* Pagi's own palette and type, so the case study looks like the café it shows. */
   :root {
-    --paper: #FFF8EE; --ink: #2A1E16; --muted: #6F5E50; --line: #EADBC8; --yolk: #F2A93B; --leaf: #5F7F45; --clay: #E9C6A8;
-    --serif: 'Fraunces', Georgia, serif; --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --paper: #F3EDE4; --surface: #FBF8F3; --ink: #1F1B17; --muted: #6B6158; --line: #E2D8CA; --accent: #B5552F; --olive: #5E5F2E;
+    --serif: 'Instrument Serif', Georgia, serif; --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
     color-scheme: light;
   }
   * { box-sizing: border-box; }
@@ -27,45 +27,45 @@
   .page { max-width: 1120px; margin: 0 auto; padding: 28px max(16px, env(safe-area-inset-right, 0px)) 72px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 44px; }
   .page > * { min-width: 0; } /* lets the diagram scroll instead of widening the page */
   .top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; font-weight: 600; color: var(--muted); }
-  h1 { margin: 14px 0 0; font: 600 clamp(3rem, 1.6rem + 6vw, 6.2rem)/.92 var(--serif); font-variation-settings: 'SOFT' 100; letter-spacing: -.035em; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  h1 svg { width: .8em; height: .8em; }
+  h1 { margin: 14px 0 0; font: 400 clamp(3.2rem, 1.6rem + 6.4vw, 6.8rem)/.92 var(--serif); letter-spacing: -.02em; }
+  h1 em { color: var(--accent); }
   .lede { margin: 18px 0 0; max-width: 62ch; font-size: 20px; line-height: 1.45; color: var(--muted); }
   .lede b { color: var(--ink); font-weight: 650; }
   .cta { margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; }
-  .cta a { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 700; padding: 14px 22px; border-radius: 999px; }
+  .cta a { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--paper); text-decoration: none; font-weight: 700; padding: 14px 22px; border-radius: 999px; }
   .cta span { font-size: 14px; color: var(--muted); max-width: 52ch; }
   video { display: block; width: 100%; aspect-ratio: 16 / 10; border-radius: 28px; background: var(--ink); }
   .note { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
-  h2 { margin: 0 0 14px; font-size: 15px; font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  h2 { margin: 0 0 14px; font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: .14em; text-transform: uppercase; }
   .chapters { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-  .chapters button { width: 100%; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 2px 16px; padding: 14px 18px; border: 1.5px solid var(--line); border-radius: 18px; background: #fff; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: border-color .2s; }
+  .chapters button { width: 100%; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 2px 16px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: inherit; font: inherit; text-align: left; cursor: pointer; transition: border-color .2s; }
   .chapters button:hover { border-color: var(--ink); }
   .chapters button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-  .chapters time { grid-row: span 2; font-weight: 700; color: #9A6510; }
+  .chapters time { grid-row: span 2; font-weight: 600; color: var(--accent); }
   .ch-title { font-weight: 650; }
   .ch-desc { font-size: 15px; color: var(--muted); }
   .chapters li[aria-current="true"] button { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
   .problem { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  .problem div { background: #fff; border: 1.5px solid var(--line); border-radius: 22px; padding: 20px; }
+  .problem div { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
   .problem p { margin: 0; }
-  .problem p:first-child { font: 600 22px/1.15 var(--serif); font-variation-settings: 'SOFT' 100; margin-bottom: 8px; }
+  .problem p:first-child { font: 400 26px/1.1 var(--serif); margin-bottom: 8px; }
   .problem p:last-child { color: var(--muted); font-size: 15.5px; }
-  .flow { margin: 0; padding: 22px 24px; background: var(--ink); color: #F4ECE0; border-radius: 24px; font: 500 14px/1.7 ui-monospace, Menlo, monospace; overflow-x: auto; white-space: pre; }
-  .flow b { color: var(--yolk); font-weight: 600; }
+  .flow { margin: 0; padding: 22px 24px; background: var(--ink); color: var(--paper); border-radius: 24px; font: 500 14px/1.7 ui-monospace, Menlo, monospace; overflow-x: auto; white-space: pre; }
+  .flow b { color: #E89A72; font-weight: 600; }
   .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .col { border-radius: 24px; padding: 22px; display: grid; gap: 10px; align-content: start; }
   .col p { margin: 0; font-weight: 700; font-size: 18px; }
   .col ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 15.5px; }
-  .c1 { background: var(--yolk); }
-  .c2 { background: var(--clay); }
-  .c3 { background: color-mix(in srgb, var(--leaf) 30%, var(--paper)); }
+  .c1 { background: var(--accent); color: var(--paper); }
+  .c2 { background: var(--surface); border: 1px solid var(--line); }
+  .c3 { background: var(--ink); color: var(--paper); }
   .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .shots figure { margin: 0; display: grid; gap: 6px; }
   .shots img { width: 100%; border-radius: 16px; border: 1px solid var(--line); display: block; }
   .shots figcaption { font-size: 14px; color: var(--muted); }
   .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-  .stat { border: 1.5px solid var(--line); border-radius: 22px; background: #fff; padding: 18px; display: grid; gap: 4px; }
-  .num { font: 600 40px/1 var(--serif); letter-spacing: -.02em; }
+  .stat { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 18px; display: grid; gap: 4px; }
+  .num { font: 400 48px/1 var(--serif); }
   .stat span:last-child { font-size: 14px; color: var(--muted); font-weight: 600; }
   .honest { display: grid; gap: 10px; margin: 0; padding-left: 1.2em; color: var(--ink); }
   .honest li { padding-left: 4px; }
@@ -83,7 +83,7 @@
   <div class="top"><span>Portfolio · Shopify developer</span><span>Yodhimas Geffananda</span></div>
 
   <header>
-    <h1><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="5" fill="#F2A93B"/><path d="M12 3v3M4.2 6.2l2 2M19.8 6.2l-2 2M2 13h3M19 13h3M3 19h18" fill="none" stroke="#2A1E16" stroke-width="1.8" stroke-linecap="round"/></svg>pagi store build</h1>
+    <h1>Pagi <em>store build</em></h1>
     <p class="lede">A Shopify build for a fictional brunch café in Bali that wants its own online ordering instead of paying a delivery app's commission. <b>Dishes with add-ons, pickup and delivery times limited by what the kitchen can cook, a kitchen board, and catering quotes</b>, in English and Bahasa Indonesia.</p>
     <p class="cta">
       <a href="store/">Order from the demo café →</a>
@@ -95,20 +95,20 @@
     <video id="demo" controls playsinline preload="metadata" poster="poster.jpg">
       <source src="pagi-demo.mp4" type="video/mp4">
     </video>
-    <p class="note">1:26 · no sound · recorded from the theme running locally on the demo catalog.</p>
+    <p class="note">1:27 · no sound · recorded from the theme running locally on the demo catalog.</p>
   </section>
 
   <section aria-labelledby="ch-h">
     <h2 id="ch-h">Chapters</h2>
     <ol class="chapters" id="chapters">
-      <li><button type="button" data-t="3.6"><time>0:03</time><span class="ch-title">Menu</span><span class="ch-desc">Categories are collections; diet badges come from a metafield.</span></button></li>
-      <li><button type="button" data-t="11.7"><time>0:11</time><span class="ch-title">Dish with add-ons</span><span class="ch-desc">Required choices and limits from a metafield. A Cart Transform Function prices the add-ons into the dish line.</span></button></li>
-      <li><button type="button" data-t="26.4"><time>0:26</time><span class="ch-title">Pickup or delivery time</span><span class="ch-desc">15-minute slots with live capacity through the app proxy. Full times are disabled.</span></button></li>
-      <li><button type="button" data-t="39.8"><time>0:39</time><span class="ch-title">Checkout says no</span><span class="ch-desc">A Checkout Validation Function refuses three plates for a slot with two left. Another time goes through.</span></button></li>
-      <li><button type="button" data-t="53.4"><time>0:53</time><span class="ch-title">Kitchen board</span><span class="ch-desc">Orders grouped by slot with every choice and note. Mark ready, pause a slot.</span></button></li>
-      <li><button type="button" data-t="62.4"><time>1:02</time><span class="ch-title">Catering and Bahasa Indonesia</span><span class="ch-desc">Quote requests become draft orders. The whole store switches to Indonesian.</span></button></li>
-      <li><button type="button" data-t="72.9"><time>1:12</time><span class="ch-title">Mobile</span><span class="ch-desc">Big tap targets for the slot grid, add button always in reach.</span></button></li>
-      <li><button type="button" data-t="79.7"><time>1:19</time><span class="ch-title">Tests</span><span class="ch-desc">Function, backend, seed and end-to-end results.</span></button></li>
+      <li><button type="button" data-t="3.6"><time>0:03</time><span class="ch-title">Menu</span><span class="ch-desc">A photo-led menu list; categories are collections and diet badges come from a metafield.</span></button></li>
+      <li><button type="button" data-t="12.2"><time>0:12</time><span class="ch-title">Dish with add-ons</span><span class="ch-desc">Required choices and limits from a metafield. A Cart Transform Function prices the add-ons into the dish line.</span></button></li>
+      <li><button type="button" data-t="26.9"><time>0:26</time><span class="ch-title">Pickup or delivery time</span><span class="ch-desc">15-minute slots with live capacity through the app proxy. Full times are disabled.</span></button></li>
+      <li><button type="button" data-t="40.2"><time>0:40</time><span class="ch-title">Checkout says no</span><span class="ch-desc">A Checkout Validation Function refuses three plates for a slot with two left. Another time goes through.</span></button></li>
+      <li><button type="button" data-t="53.8"><time>0:53</time><span class="ch-title">Kitchen board</span><span class="ch-desc">Orders grouped by slot with every choice and note. Mark ready, pause a slot.</span></button></li>
+      <li><button type="button" data-t="62.8"><time>1:02</time><span class="ch-title">Catering and Bahasa Indonesia</span><span class="ch-desc">Quote requests become draft orders. The whole store switches to Indonesian.</span></button></li>
+      <li><button type="button" data-t="74.2"><time>1:14</time><span class="ch-title">Mobile</span><span class="ch-desc">Big tap targets for the slot grid, add button always in reach.</span></button></li>
+      <li><button type="button" data-t="81.0"><time>1:21</time><span class="ch-title">Tests</span><span class="ch-desc">Function, backend, seed and end-to-end results.</span></button></li>
     </ol>
   </section>
 
@@ -155,7 +155,7 @@ pagi-ops ◀─ orders/create, orders/cancelled webhooks (HMAC, idempotent)
 
   <section aria-label="Verification" class="stats">
     <div class="stat"><span class="num">2</span><span>Shopify Functions</span></div>
-    <div class="stat"><span class="num">38</span><span>Unit tests</span></div>
+    <div class="stat"><span class="num">39</span><span>Unit tests</span></div>
     <div class="stat"><span class="num">12/12</span><span>End-to-end checks</span></div>
     <div class="stat"><span class="num">0</span><span>Theme Check offenses</span></div>
   </section>
@@ -170,7 +170,7 @@ pagi-ops ◀─ orders/create, orders/cancelled webhooks (HMAC, idempotent)
   </section>
 
   <footer class="foot">
-    <span>Pagi is a fictional café made for this portfolio. Illustrations are drawn in code.</span>
+    <span>Pagi is a fictional café made for this portfolio. Food photos are public domain (CC0); <a href="https://github.com/geffaa/pagi-shopify/blob/main/design/photos/CREDITS.md">credits</a>.</span>
     <a href="https://github.com/geffaa/pagi-shopify">Source code on GitHub →</a>
   </footer>
 </div>

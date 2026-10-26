@@ -1,29 +1,49 @@
 {%- comment -%}
-  Setting-driven tokens, inline so they exist before base.css. The fallback serif is
-  metric-adjusted so the swap to Fraunces doesn't move the layout.
+  Setting-driven tokens, inline so they exist before base.css. The fallbacks are
+  metric-adjusted so swapping in the web fonts doesn't move the layout.
 {%- endcomment -%}
 <style>
   @font-face {
-    font-family: 'Fraunces';
-    src: url('{{ 'fraunces-soft.woff2' | asset_url }}') format('woff2');
+    font-family: 'Instrument Serif';
+    src: url('{{ 'instrument-serif.woff2' | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Instrument Serif';
+    src: url('{{ 'instrument-serif-italic.woff2' | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url('{{ 'inter-var.woff2' | asset_url }}') format('woff2');
     font-weight: 100 900;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Fraunces Fallback';
+    font-family: 'Serif Fallback';
     src: local('Georgia'), local('Times New Roman');
-    size-adjust: 104%;
-    ascent-override: 92%;
-    descent-override: 24%;
-    line-gap-override: 0%;
+    size-adjust: 88%;
+    ascent-override: 98%;
+    descent-override: 26%;
+  }
+  @font-face {
+    font-family: 'Inter Fallback';
+    src: local('Arial'), local('Helvetica Neue');
+    size-adjust: 107%;
+    ascent-override: 90%;
+    descent-override: 22%;
   }
   :root {
     --paper: {{ settings.color_paper }};
+    --surface: {{ settings.color_surface }};
     --ink: {{ settings.color_ink }};
     --muted: {{ settings.color_muted }};
     --line: {{ settings.color_line }};
-    --yolk: {{ settings.color_yolk }};
-    --leaf: {{ settings.color_leaf }};
+    --accent: {{ settings.color_accent }};
+    --olive: {{ settings.color_olive }};
     --ink-rgb: {{ settings.color_ink.red }}, {{ settings.color_ink.green }}, {{ settings.color_ink.blue }};
   }
 </style>

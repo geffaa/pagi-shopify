@@ -10,19 +10,64 @@
   {
     "name": "Brand",
     "settings": [
-      { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "pagi" },
-      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+      {
+        "type": "text",
+        "id": "wordmark",
+        "label": "Wordmark",
+        "default": "Pagi"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
     ]
   },
   {
     "name": "Colors",
     "settings": [
-      { "type": "color", "id": "color_paper", "label": "Paper", "default": "#FFF8EE" },
-      { "type": "color", "id": "color_ink", "label": "Ink", "default": "#2A1E16" },
-      { "type": "color", "id": "color_muted", "label": "Muted text", "default": "#6F5E50" },
-      { "type": "color", "id": "color_line", "label": "Lines", "default": "#EADBC8" },
-      { "type": "color", "id": "color_yolk", "label": "Accent", "default": "#F2A93B" },
-      { "type": "color", "id": "color_leaf", "label": "Plant-based badge", "default": "#5F7F45" }
+      {
+        "type": "color",
+        "id": "color_paper",
+        "label": "Background (sand)",
+        "default": "#F3EDE4"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Cards",
+        "default": "#FBF8F3"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Text",
+        "default": "#1F1B17"
+      },
+      {
+        "type": "color",
+        "id": "color_muted",
+        "label": "Muted text",
+        "default": "#6B6158"
+      },
+      {
+        "type": "color",
+        "id": "color_line",
+        "label": "Lines",
+        "default": "#E2D8CA"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (terracotta)",
+        "default": "#B5552F"
+      },
+      {
+        "type": "color",
+        "id": "color_olive",
+        "label": "Plant-based badge",
+        "default": "#5E5F2E"
+      }
     ]
   },
   {
@@ -32,22 +77,76 @@
         "type": "paragraph",
         "content": "Shown to customers only. Checkout enforces the real hours and capacity through the pickup-slot validation, configured in Shopify admin."
       },
-      { "type": "text", "id": "timezone", "label": "Shop time zone (IANA)", "default": "Asia/Makassar" },
-      { "type": "text", "id": "hours_open", "label": "Opens", "default": "08:00" },
-      { "type": "text", "id": "hours_close", "label": "Closes", "default": "16:00" },
-      { "type": "text", "id": "kitchen_close", "label": "Last food orders", "default": "15:30" },
-      { "type": "text", "id": "slots_endpoint", "label": "Slots endpoint (app proxy)", "default": "/apps/pagi/slots" },
-      { "type": "text", "id": "delivery_note", "label": "Delivery note", "default": "Within 5 km of Pererenan. The delivery fee is added at checkout from your address." },
-      { "type": "text", "id": "tax_note", "label": "Tax note", "default": "Prices include 10% PB1 tax. No service charge." }
+      {
+        "type": "text",
+        "id": "timezone",
+        "label": "Shop time zone (IANA)",
+        "default": "Asia/Makassar"
+      },
+      {
+        "type": "text",
+        "id": "hours_open",
+        "label": "Opens",
+        "default": "08:00"
+      },
+      {
+        "type": "text",
+        "id": "hours_close",
+        "label": "Closes",
+        "default": "16:00"
+      },
+      {
+        "type": "text",
+        "id": "kitchen_close",
+        "label": "Last food orders",
+        "default": "15:30"
+      },
+      {
+        "type": "text",
+        "id": "slots_endpoint",
+        "label": "Slots endpoint (app proxy)",
+        "default": "/apps/pagi/slots"
+      },
+      {
+        "type": "text",
+        "id": "delivery_note",
+        "label": "Delivery note",
+        "default": "Within 5 km of Pererenan. The delivery fee is added at checkout from your address."
+      },
+      {
+        "type": "text",
+        "id": "tax_note",
+        "label": "Tax note",
+        "default": "Prices include 10% PB1 tax. No service charge."
+      }
     ]
   },
   {
     "name": "Contact",
     "settings": [
-      { "type": "text", "id": "address", "label": "Address", "default": "Jl. Pantai Pererenan No. 8, Pererenan, Bali" },
-      { "type": "text", "id": "whatsapp", "label": "WhatsApp number (international, digits only)", "default": "6281200000000" },
-      { "type": "url", "id": "maps_url", "label": "Directions link" },
-      { "type": "text", "id": "instagram", "label": "Instagram handle", "default": "pagi.bali" }
+      {
+        "type": "text",
+        "id": "address",
+        "label": "Address",
+        "default": "Jl. Pantai Pererenan No. 8, Pererenan, Bali"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp",
+        "label": "WhatsApp number (international, digits only)",
+        "default": "6281200000000"
+      },
+      {
+        "type": "url",
+        "id": "maps_url",
+        "label": "Directions link"
+      },
+      {
+        "type": "text",
+        "id": "instagram",
+        "label": "Instagram handle",
+        "default": "pagi.bali"
+      }
     ]
   }
 ]

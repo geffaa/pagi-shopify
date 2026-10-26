@@ -1,6 +1,16 @@
 {
   "type": "footer",
   "name": "Footer",
-  "sections": { "footer": { "type": "footer", "settings": { "menu": "footer" } } },
-  "order": ["footer"]
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "menu": "footer",
+        "credits_link": "https://github.com/geffaa/pagi-shopify/blob/main/design/photos/CREDITS.md"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
 }

@@ -2,13 +2,11 @@
   "current": "Default",
   "presets": {
     "Default": {
-      "wordmark": "pagi",
-      "color_paper": "#FFF8EE",
-      "color_ink": "#2A1E16",
-      "color_muted": "#6F5E50",
-      "color_line": "#EADBC8",
-      "color_yolk": "#F2A93B",
-      "color_leaf": "#5F7F45",
+      "wordmark": "Pagi",
+      "color_paper": "#F3EDE4",
+      "color_ink": "#1F1B17",
+      "color_muted": "#6B6158",
+      "color_line": "#E2D8CA",
       "timezone": "Asia/Makassar",
       "hours_open": "08:00",
       "hours_close": "16:00",
@@ -19,7 +17,10 @@
       "address": "Jl. Pantai Pererenan No. 8, Pererenan, Bali",
       "whatsapp": "6281200000000",
       "maps_url": "https://maps.google.com/?q=Pererenan+Bali",
-      "instagram": "pagi.bali"
+      "instagram": "pagi.bali",
+      "color_surface": "#FBF8F3",
+      "color_accent": "#B5552F",
+      "color_olive": "#5E5F2E"
     }
   }
 }

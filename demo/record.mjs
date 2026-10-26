@@ -37,17 +37,17 @@ const OVERLAY = `
         transition: transform 60ms linear; }
       #demo-cursor.down { transform: scale(.82); }
       #demo-cap { position: fixed; z-index: 2147483646; left: 50%; bottom: 28px; transform: translate(-50%, 12px); opacity: 0;
-        background: #2A1E16; color: #FFF8EE; font: 600 15px/1.35 system-ui, sans-serif; border-radius: 999px;
+        background: #1F1B17; color: #F3EDE4; font: 500 15px/1.35 Inter, system-ui, sans-serif; border-radius: 999px;
         letter-spacing: .01em; padding: 12px 18px 11px; max-width: 760px; text-align: center; pointer-events: none;
         transition: opacity 240ms ease, transform 240ms ease; box-shadow: 0 0 0 1px rgba(238,235,228,.12); }
       #demo-cap.on { opacity: 1; transform: translate(-50%, 0); }
-      #demo-cap b { color: #F2A93B; font-weight: 700; }
+      #demo-cap b { color: #E89A72; font-weight: 600; }
     \`;
     const add = () => {
       document.head.appendChild(css);
       const c = document.createElement('div');
       c.id = 'demo-cursor';
-      c.innerHTML = '<svg viewBox="0 0 22 22" width="22" height="22"><path d="M3 2l15 9-7 1.6L7.5 20z" fill="#2A1E16" stroke="#FFF8EE" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+      c.innerHTML = '<svg viewBox="0 0 22 22" width="22" height="22"><path d="M3 2l15 9-7 1.6L7.5 20z" fill="#1F1B17" stroke="#F3EDE4" stroke-width="1.4" stroke-linejoin="round"/></svg>';
       const cap = document.createElement('div');
       cap.id = 'demo-cap';
       document.body.append(c, cap);
@@ -185,19 +185,19 @@ async function typeSlow(page, selector, text) {
 async function slide(page, html) {
   await page.setContent(
     `<!doctype html><html><head><style>
-      @font-face { font-family: Fraunces; src: url('${BASE}/assets/fraunces-soft.woff2') format('woff2'); font-weight: 100 900; }
-      html, body { margin: 0; height: 100%; background: #FFF8EE; color: #2A1E16; font-family: system-ui, sans-serif; }
+      @font-face { font-family: 'Instrument Serif'; src: url('${BASE}/assets/instrument-serif.woff2') format('woff2'); } @font-face { font-family: Inter; src: url('${BASE}/assets/inter-var.woff2') format('woff2'); font-weight: 100 900; }
+      html, body { margin: 0; height: 100%; background: #F3EDE4; color: #1F1B17; font-family: Inter, system-ui, sans-serif; }
       .s { height: 100%; box-sizing: border-box; padding: 64px 80px; display: grid; }
-      .lab { font-weight: 600; font-size: 16px; color: #6F5E50; }
-      h1 { font-family: Fraunces, serif; font-variation-settings: 'SOFT' 100; font-size: 150px; line-height: .9; font-weight: 600; letter-spacing: -.04em; margin: 0; }
-      h2 { font-family: Fraunces, serif; font-variation-settings: 'SOFT' 100; font-size: 68px; line-height: 1; font-weight: 600; letter-spacing: -.03em; margin: 0; }
+      .lab { font-weight: 500; font-size: 16px; color: #6B6158; }
+      h1 { font-family: 'Instrument Serif', serif; font-size: 170px; line-height: .9; font-weight: 400; letter-spacing: -.02em; margin: 0; }
+      h2 { font-family: 'Instrument Serif', serif; font-size: 76px; line-height: 1; font-weight: 400; letter-spacing: -.01em; margin: 0; }
       .dots { display: flex; gap: 14px; }
       .dots i { width: 64px; height: 64px; border-radius: 50%; display: block; box-shadow: inset -8px -8px 0 rgba(0,0,0,.1); }
       .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-      .card { border-radius: 28px; padding: 24px; background: #fff; border: 1.5px solid #EADBC8; }
-      .num { font-size: 60px; font-weight: 760; letter-spacing: -.03em; line-height: 1; }
-      pre { font: 500 14px/1.6 ui-monospace, Menlo, monospace; background: #2A1E16; color: #F4ECE0; padding: 20px 24px; margin: 0; border-radius: 24px; }
-      .ok { color: #9BD27F } .k { color: #F2A93B }
+      .card { border-radius: 22px; padding: 24px; background: #FBF8F3; border: 1px solid #E2D8CA; }
+      .num { font-family: 'Instrument Serif', serif; font-size: 64px; font-weight: 400; line-height: 1; }
+      pre { font: 500 14px/1.6 ui-monospace, Menlo, monospace; background: #1F1B17; color: #F3EDE4; padding: 20px 24px; margin: 0; border-radius: 24px; }
+      .ok { color: #9BC79A } .k { color: #E89A72 }
     </style></head><body>${html}</body></html>`,
     { waitUntil: 'load' }
   );
@@ -241,8 +241,8 @@ await still(
   `<div class="s" style="align-content:space-between">
     <div class="lab" style="display:flex;justify-content:space-between"><span>Portfolio · Shopify developer</span><span>Yodhimas Geffananda</span></div>
     <div style="display:grid;gap:28px">
-      <svg width="96" height="96" viewBox="0 0 24 24"><circle cx="12" cy="13" r="5" fill="#F2A93B"/><path d="M12 3v3M4.2 6.2l2 2M19.8 6.2l-2 2M2 13h3M19 13h3M3 19h18" fill="none" stroke="#2A1E16" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <h1>pagi</h1>
+      <p class="lab" style="color:#B5552F;letter-spacing:.14em;text-transform:uppercase;font-weight:600">Pererenan, Bali</p>
+      <h1>Pagi</h1>
       <p style="font-size:30px;font-weight:600;margin:0;max-width:32ch">Order-ahead pickup and delivery for a brunch café, without a delivery app's commission.</p>
     </div>
     <div class="lab" style="display:flex;gap:28px;flex-wrap:wrap"><span>Cart Transform Function</span><span>Checkout Validation Function</span><span>App proxy + webhooks</span><span>EN / ID</span><span>Liquid · vanilla JS</span></div>
@@ -360,13 +360,13 @@ const phoneHost = await newPage({ width: W, height: H, deviceScaleFactor: 1 });
 await phoneHost.goto(`${BASE}/`, { waitUntil: 'networkidle0' });
 await phoneHost.setContent(
   `<!doctype html><html><head><style>
-    @font-face { font-family: Fraunces; src: url('${BASE}/assets/fraunces-soft.woff2') format('woff2'); font-weight: 100 900; }
-    html,body{margin:0;height:100%;background:#F2A93B;font-family:system-ui,sans-serif;color:#2A1E16}
+    @font-face { font-family: 'Instrument Serif'; src: url('${BASE}/assets/instrument-serif.woff2') format('woff2'); } @font-face { font-family: Inter; src: url('${BASE}/assets/inter-var.woff2') format('woff2'); font-weight: 100 900; }
+    html,body{margin:0;height:100%;background:#B5552F;font-family:Inter,system-ui,sans-serif;color:#F3EDE4}
     .wrap{height:100%;display:grid;grid-template-columns:1fr 430px 1fr;align-items:center}
-    .phone{width:390px;height:780px;border:12px solid #2A1E16;border-radius:46px;overflow:hidden;background:#FFF8EE;justify-self:center}
+    .phone{width:390px;height:780px;border:12px solid #1F1B17;border-radius:46px;overflow:hidden;background:#F3EDE4;justify-self:center}
     iframe{width:390px;height:780px;border:0;display:block}
     .copy{padding:0 56px}
-    h2{font-family:Fraunces,serif;font-variation-settings:'SOFT' 100;font-size:58px;line-height:.95;font-weight:600;letter-spacing:-.03em;margin:0 0 18px}
+    h2{font-family:'Instrument Serif',serif;font-size:64px;line-height:.95;font-weight:400;letter-spacing:-.01em;margin:0 0 18px}
     p{font-size:19px;line-height:1.45;max-width:28ch}
   </style></head><body><div class="wrap">
     <div class="copy"><h2>Ordered from a sunbed</h2><p>Most orders come from phones. The slot picker is a grid of big buttons, and the add button stays in reach.</p></div>
@@ -411,10 +411,10 @@ await still(
 <span class="ok">✓</span> catering requests are checked, stored and turned into a draft order
 <span class="ok">✓</span> customer redaction removes personal details but keeps slot counts
 
-<span class="k">38/38 passed</span>   ·   e2e <span class="k">12/12 passed</span></pre>
+<span class="k">39/39 passed</span>   ·   e2e <span class="k">12/12 passed</span></pre>
     <div class="grid">
       <div class="card"><div class="num">2</div><div class="lab">Shopify Functions</div></div>
-      <div class="card"><div class="num">38</div><div class="lab">Unit tests</div></div>
+      <div class="card"><div class="num">39</div><div class="lab">Unit tests</div></div>
       <div class="card"><div class="num">12/12</div><div class="lab">End-to-end checks</div></div>
       <div class="card"><div class="num">0</div><div class="lab">Theme Check offenses</div></div>
     </div>

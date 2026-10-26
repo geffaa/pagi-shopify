@@ -1,35 +1,27 @@
 {%- comment -%}
-  A dish on the menu. Dishes with required choices open the dish page; the rest add straight
-  to the order. - product
+  A dish on the menu, as a row: name, description and price on the left, photo on the right
+  (the layout people know from delivery apps). Dishes with choices open the dish page; the
+  rest add straight to the order. - product
 {%- endcomment -%}
-{%- liquid
-  assign groups = product.metafields.pagi.modifiers.value.groups
-  assign needs_choice = false
-  for g in groups
-    if g.min > 0
-      assign needs_choice = true
-    endif
-  endfor
--%}
+{%- assign groups = product.metafields.pagi.modifiers.value.groups -%}
 <article class="dish">
-  <a href="{{ product.url }}" class="dish__img" tabindex="-1" aria-hidden="true">
-    {%- if product.featured_media -%}
-      {{ product.featured_media | image_url: width: 640 | image_tag: widths: '320, 480, 640', sizes: '(min-width: 900px) 25vw, 50vw', alt: '', loading: 'lazy' }}
-    {%- endif -%}
+  <a href="{{ product.url }}" class="dish__link">
+    <div class="dish__body">
+      <h3 class="dish__title">{{ product.title | escape }}</h3>
+      <p class="dish__desc">{{ product.description | strip_html | truncate: 110 }}</p>
+      <p class="dish__meta"><span class="price">{{ product.price | money }}</span>{% render 'diet-badges', product: product %}</p>
+    </div>
+    <div class="dish__img">
+      {%- if product.featured_media -%}
+        {{ product.featured_media | image_url: width: 480 | image_tag: widths: '240, 360, 480', sizes: '(min-width: 900px) 160px, 120px', alt: '', loading: 'lazy' }}
+      {%- endif -%}
+    </div>
   </a>
-  <div class="dish__body">
-    <h3 class="dish__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
-    {% render 'diet-badges', product: product %}
-    <p class="dish__desc small muted">{{ product.description | strip_html | truncate: 96 }}</p>
-  </div>
-  <div class="dish__foot">
-    <span class="price">{{ product.price | money }}</span>
-    {%- if needs_choice or groups.size > 0 -%}
-      <a href="{{ product.url }}" class="btn btn--sm btn--ghost">{{ 'dish.customise' | t }}</a>
-    {%- else -%}
-      <quick-add data-variant="{{ product.selected_or_first_available_variant.id }}">
-        <button type="button" class="btn btn--sm" aria-label="{{ 'dish.add' | t }} {{ product.title | escape }}">{% render 'icon', name: 'plus' %} {{ 'dish.add' | t }}</button>
-      </quick-add>
-    {%- endif -%}
-  </div>
+  {%- if groups.size > 0 -%}
+    <a href="{{ product.url }}" class="dish__add" tabindex="-1" aria-hidden="true">{% render 'icon', name: 'plus' %}</a>
+  {%- else -%}
+    <quick-add class="dish__add" data-variant="{{ product.selected_or_first_available_variant.id }}">
+      <button type="button" aria-label="{{ 'dish.add' | t }} {{ product.title | escape }}">{% render 'icon', name: 'plus' %}</button>
+    </quick-add>
+  {%- endif -%}
 </article>

@@ -1,7 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import catalog from '../catalog.json' with { type: 'json' };
-import { addonInput, giftCardInput, menuInput, modifiersFor, validationInput } from '../seed.js';
+import { SHOP_IMAGES, addonInput, giftCardInput, menuInput, modifiersFor, validationInput } from '../seed.js';
+import { existsSync, readFileSync } from 'node:fs';
 import { checkMods, parseModifiers } from '../../lib/modifiers.js';
 import { cartValidationsGenerateRun } from '../../extensions/pickup-slot/src/cart_validations_generate_run.js';
 
@@ -58,4 +59,14 @@ test('the Validation configuration matches the shop hours and is read as such by
   });
   assert.equal(cartValidationsGenerateRun(cart('2026-10-27T15:30')).operations.length, 0);
   assert.equal(cartValidationsGenerateRun(cart('2026-10-27T15:45')).operations.length, 1);
+});
+
+test('every image the theme and catalog name exists in design/out', () => {
+  const out = (n) => new URL(`../../design/out/${n}.jpg`, import.meta.url);
+  for (const art of [...catalog.menu, ...catalog.beans, catalog.gift_card].map((x) => x.art)) assert.ok(existsSync(out(art)), art);
+  const index = readFileSync(new URL('../../theme/templates/index.json', import.meta.url), 'utf8');
+  for (const [, name] of index.matchAll(/shop_images\/([\w-]+)\.jpg/g)) {
+    assert.ok(SHOP_IMAGES.includes(name), `${name} is not uploaded by the seed`);
+    assert.ok(existsSync(out(name)), name);
+  }
 });

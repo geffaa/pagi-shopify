@@ -1,24 +1,24 @@
 {%- comment -%}
-  The whole menu on one page: a sticky category bar and a grid per collection. Categories are
-  ordinary collections, so staff reorder dishes in Shopify admin.
+  The whole menu on one page: a sticky category bar, then each category as a list of dish
+  rows. Categories are ordinary collections, so staff reorder dishes in Shopify admin.
 {%- endcomment -%}
 <section class="section menu" id="menu">
-  <div class="container stack" style="--gap:10px">
+  <div class="container menu__head">
     <h2 class="d-1">{{ section.settings.heading | escape }}</h2>
-    <p class="lead muted">{{ section.settings.text | escape }}</p>
+    <p class="lead">{{ section.settings.text | escape }}</p>
   </div>
   <nav class="menu__tabs" aria-label="{{ section.settings.heading | escape }}">
-    <div class="container cluster" style="--gap:8px">
+    <div class="container menu__tabs-inner">
       {%- for c in section.settings.categories -%}
-        <a href="#cat-{{ c.handle }}" class="chip">{{ c.title | escape }}</a>
+        <a href="#cat-{{ c.handle }}" class="tab">{{ c.title | escape }}</a>
       {%- endfor -%}
     </div>
   </nav>
-  <div class="container stack" style="--gap:48px">
+  <div class="container">
     {%- for c in section.settings.categories -%}
       <div class="menu__cat" id="cat-{{ c.handle }}">
-        <h3 class="d-2">{{ c.title | escape }}</h3>
-        <div class="dish-grid">
+        <h3 class="menu__cat-title">{{ c.title | escape }} <span>{{ c.products_count }}</span></h3>
+        <div class="dish-list">
           {%- for product in c.products -%}{% render 'dish-card', product: product %}{%- endfor -%}
         </div>
       </div>
@@ -31,7 +31,7 @@
   "name": "Menu",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "The menu" },
-    { "type": "textarea", "id": "text", "label": "Text", "default": "Everything is cooked to order. Choose your eggs, your bread and what goes on top." },
+    { "type": "textarea", "id": "text", "label": "Text" },
     { "type": "collection_list", "id": "categories", "label": "Categories", "limit": 8 }
   ],
   "presets": [{ "name": "Menu" }]

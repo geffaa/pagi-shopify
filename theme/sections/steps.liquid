@@ -1,11 +1,11 @@
-<section class="section steps">
-  <div class="container">
+<section class="section section--tight steps">
+  <div class="container steps__grid">
     <h2 class="d-2">{{ section.settings.heading | escape }}</h2>
     <ol class="steps__list" role="list">
       {%- for block in section.blocks -%}
         <li class="steps__item" {{ block.shopify_attributes }}>
-          <span class="steps__n">{{ forloop.index }}</span>
-          <h3 class="d-3">{{ block.settings.title | escape }}</h3>
+          <span class="steps__n">0{{ forloop.index }}</span>
+          <h3 class="steps__title">{{ block.settings.title | escape }}</h3>
           <p class="muted small">{{ block.settings.text | escape }}</p>
         </li>
       {%- endfor -%}

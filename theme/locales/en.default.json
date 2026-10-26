@@ -111,7 +111,8 @@
     "find": "Find us",
     "directions": "Directions",
     "whatsapp": "WhatsApp us",
-    "tax": "Prices include 10% PB1 tax."
+    "tax": "Prices include 10% PB1 tax.",
+    "credits": "Photo credits"
   },
   "404": {
     "title": "This page isn't on the menu",

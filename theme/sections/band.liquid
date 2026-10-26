@@ -1,22 +1,22 @@
-{%- comment -%} A colour band with a picture and a link: beans, gift cards, catering. {%- endcomment -%}
-<section class="section">
+{%- comment -%} Picture and copy side by side: beans, gift cards, catering. {%- endcomment -%}
+<section class="section section--tight">
   <div class="container">
     <div class="band band--{{ section.settings.tone }}{% if section.settings.flip %} band--flip{% endif %}">
       <div class="band__art">
-        {%- if section.settings.image -%}{{ section.settings.image | image_url: width: 1000 | image_tag: widths: '500, 800, 1000', sizes: '(min-width: 900px) 40vw, 100vw', loading: 'lazy', alt: '' }}{%- endif -%}
+        {%- if section.settings.image -%}{{ section.settings.image | image_url: width: 1200 | image_tag: widths: '500, 800, 1200', sizes: '(min-width: 900px) 50vw, 100vw', loading: 'lazy', alt: section.settings.image.alt }}{%- endif -%}
       </div>
-      <div class="stack band__copy" style="--gap:16px">
+      <div class="band__copy">
         <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
         <h2 class="d-2">{{ section.settings.heading | escape }}</h2>
-        <p class="muted">{{ section.settings.text | escape }}</p>
+        <p>{{ section.settings.text | escape }}</p>
         {%- if section.settings.collection != blank -%}
           <ul class="band__list" role="list">
             {%- for p in section.settings.collection.products limit: 3 -%}
-              <li><a href="{{ p.url }}">{{ p.title | escape }}</a> <span class="muted">{{ p.price | money }}</span></li>
+              <li><a href="{{ p.url }}">{{ p.title | escape }}</a><span>{{ p.price | money }}</span></li>
             {%- endfor -%}
           </ul>
         {%- endif -%}
-        <div><a href="{{ section.settings.link }}" class="btn">{{ section.settings.cta | escape }} {% render 'icon', name: 'arrow' %}</a></div>
+        <div><a href="{{ section.settings.link }}" class="btn {% if section.settings.tone == 'accent' %}btn--light{% else %}btn--ghost{% endif %}">{{ section.settings.cta | escape }} {% render 'icon', name: 'arrow' %}</a></div>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
 {
   "name": "Band",
   "settings": [
-    { "type": "select", "id": "tone", "label": "Colour", "default": "yolk", "options": [{ "value": "yolk", "label": "Yolk" }, { "value": "leaf", "label": "Leaf" }, { "value": "clay", "label": "Clay" }] },
+    { "type": "select", "id": "tone", "label": "Colour", "default": "plain", "options": [{ "value": "plain", "label": "Plain" }, { "value": "accent", "label": "Terracotta" }] },
     { "type": "checkbox", "id": "flip", "label": "Picture on the right", "default": false },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "text", "id": "heading", "label": "Heading" },

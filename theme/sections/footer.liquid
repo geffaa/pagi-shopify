@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="container footer__grid">
     <div class="stack" style="--gap:12px">
-      <span class="wordmark wordmark--lg">{% render 'icon', name: 'sun' %}{{ settings.wordmark }}</span>
+      <span class="wordmark wordmark--lg">{{ settings.wordmark }}</span>
       <p class="muted small">{{ section.settings.blurb }}</p>
     </div>
     <div class="stack" style="--gap:6px">
@@ -23,6 +23,7 @@
   </div>
   <div class="container footer__base xsmall muted">
     <span>© {{ 'now' | date: '%Y' }} {{ shop.name }} · {{ 'footer.tax' | t }}</span>
+    {%- if section.settings.credits_link != blank -%}<a href="{{ section.settings.credits_link }}">{{ 'footer.credits' | t }}</a>{%- endif -%}
     {%- if settings.instagram != blank -%}<a href="https://instagram.com/{{ settings.instagram }}" rel="noopener" target="_blank">@{{ settings.instagram }}</a>{%- endif -%}
   </div>
 </footer>
@@ -33,7 +34,8 @@
   "enabled_on": { "groups": ["footer"] },
   "settings": [
     { "type": "textarea", "id": "blurb", "label": "Blurb", "default": "Brunch and specialty coffee in Pererenan. Order ahead, skip the queue." },
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
+    { "type": "url", "id": "credits_link", "label": "Photo credits link" }
   ]
 }
 {% endschema %}

@@ -4,7 +4,7 @@
  *   2. add-on products (hidden from search and collections; the Cart Transform adds them)
  *   3. menu products, each with a `pagi.modifiers` metafield holding the add-on variant IDs
  *   4. coffee beans and the gift card
- *   5. a collection per menu category, plus beans; the catering page
+ *   5. a collection per menu category, plus beans; the catering page; home page images
  *   6. Indonesian translations (the `id` locale) for every product and collection
  *   7. the Cart Transform (menu-addons) and the checkout Validation (pickup-slot)
  *
@@ -27,6 +27,9 @@ export const sku = (prefix, handle) => `${prefix}-${handle.replace(/^addon-/, ''
 /* ---------------------------------------------------------------------- */
 /* Pure builders (unit-tested)                                             */
 /* ---------------------------------------------------------------------- */
+
+/** Images the home page template picks by file name. */
+export const SHOP_IMAGES = ['hero', 'beans-kintamani', 'gift-card', 'catering'];
 
 export const DEFINITIONS = [
   { ownerType: 'PRODUCT', key: 'modifiers', name: 'Modifiers', type: 'json', description: 'Choice groups and allowed add-ons. Read by the theme and both Functions.' },
@@ -141,6 +144,7 @@ const G = {
   collectionCreate: `mutation($input: CollectionInput!) { collectionCreate(input: $input) { collection { id } userErrors { message } } }`,
   pageCreate: `mutation($page: PageCreateInput!) { pageCreate(page: $page) { page { id } userErrors { field message code } } }`,
   metafieldsSet: `mutation($m: [MetafieldsSetInput!]!) { metafieldsSet(metafields: $m) { userErrors { field message } } }`,
+  fileCreate: `mutation($files: [FileCreateInput!]!) { fileCreate(files: $files) { files { id } userErrors { message } } }`,
   locale: `mutation { shopLocaleEnable(locale: "id") { userErrors { message } } shopLocaleUpdate(locale: "id", shopLocale: { published: true }) { userErrors { message } } }`,
   translatable: `query($id: ID!) { translatableResource(resourceId: $id) { translatableContent { key digest } } }`,
   translate: `mutation($id: ID!, $t: [TranslationInput!]!) { translationsRegister(resourceId: $id, translations: $t) { userErrors { field message } } }`,
@@ -154,11 +158,11 @@ const G = {
 async function upload(admin, path) {
   const bytes = await readFile(path);
   const filename = basename(path);
-  const data = await admin.graphql(G.staged, { input: [{ filename, mimeType: 'image/png', resource: 'IMAGE', httpMethod: 'POST', fileSize: String(bytes.length) }] });
+  const data = await admin.graphql(G.staged, { input: [{ filename, mimeType: 'image/jpeg', resource: 'IMAGE', httpMethod: 'POST', fileSize: String(bytes.length) }] });
   const target = admin.assertNoUserErrors(data.stagedUploadsCreate, 'stagedUploadsCreate').stagedTargets[0];
   const form = new FormData();
   target.parameters.forEach(({ name, value }) => form.append(name, value));
-  form.append('file', new Blob([bytes], { type: 'image/png' }), filename);
+  form.append('file', new Blob([bytes], { type: 'image/jpeg' }), filename);
   const res = await fetch(target.url, { method: 'POST', body: form });
   if (!res.ok) throw new Error(`upload ${filename}: ${res.status}`);
   return target.resourceUrl;
@@ -170,7 +174,7 @@ export async function seed({ admin, imagesDir = join(root, 'design/out'), log = 
   const store = ctx.publications.nodes.find((p) => p.name === 'Online Store');
   const publish = async (id) => store && admin.graphql(G.publish, { id, input: [{ publicationId: store.id }] });
   const image = async (art) => {
-    const p = join(imagesDir, `${art}.png`);
+    const p = join(imagesDir, `${art}.jpg`);
     return (await exists(p)) ? [await upload(admin, p)] : [];
   };
   const put = async (input, label) => {
@@ -234,6 +238,15 @@ export async function seed({ admin, imagesDir = join(root, 'design/out'), log = 
     if (errs.length) throw new Error(`page ${page.handle}: ${errs[0].message}`);
   }
   log('✓ collections and catering page');
+
+  // Home page images, referenced by templates/index.json as shopify://shop_images/<name>.jpg
+  for (const name of SHOP_IMAGES) {
+    const path = join(imagesDir, `${name}.jpg`);
+    if (!(await exists(path))) continue;
+    const r = await admin.graphql(G.fileCreate, { files: [{ originalSource: await upload(admin, path), filename: `${name}.jpg`, contentType: 'IMAGE' }] });
+    admin.assertNoUserErrors(r.fileCreate, `file ${name}`);
+  }
+  log('✓ home page images');
 
   // 6. Bahasa Indonesia
   await admin.graphql(G.locale);

@@ -1,9 +1,7 @@
 {
   "Pererenan, Bali": "Pererenan, Bali",
   "Brunch, ready when you are": "Brunch, siap saat kamu datang",
-  "Order ahead, pick a time, and collect at the counter. Or have it brought to your villa within 5 km.": "Pesan duluan, pilih jam, lalu ambil di kasir. Atau kami antar ke vilamu dalam radius 5 km.",
   "Order now": "Pesan sekarang",
-  "Ready in about 20 minutes": "Siap dalam sekitar 20 menit",
   "Skip the queue": "Tanpa antre",
   "Build your plate": "Racik piringmu",
   "Pick your eggs and bread, add bacon or avocado. Allergies go in the kitchen note.": "Pilih telur dan roti, tambah bacon atau alpukat. Alergi tulis di catatan dapur.",
@@ -30,10 +28,14 @@
   "Brunch boards": "Papan brunch",
   "Sourdough, eggs two ways, smashed avo, roast vegetables, fruit and pastries on shared boards.": "Sourdough, telur dua cara, alpukat, sayur panggang, buah dan pastry di papan bersama.",
   "Coffee cart": "Gerobak kopi",
-  "A barista and our espresso cart for three hours: flat whites, iced lattes, matcha and jamu.": "Barista dan gerobak espresso kami selama tiga jam: flat white, es latte, matcha dan jamu.",
   "Brunch boards + coffee cart": "Papan brunch + gerobak kopi",
   "Both, for villa mornings, retreats and team offsites.": "Keduanya, untuk pagi di vila, retreat dan acara tim.",
   "Brunch and specialty coffee in Pererenan. Order ahead, skip the queue.": "Brunch dan kopi spesialti di Pererenan. Pesan duluan, tanpa antre.",
   "Within 5 km of Pererenan. The delivery fee is added at checkout from your address.": "Dalam radius 5 km dari Pererenan. Ongkir dihitung saat checkout dari alamatmu.",
-  "Prices include 10% PB1 tax. No service charge.": "Harga sudah termasuk pajak PB1 10%. Tanpa service charge."
+  "Prices include 10% PB1 tax. No service charge.": "Harga sudah termasuk pajak PB1 10%. Tanpa service charge.",
+  "Order ahead, choose a time and collect at the counter without the queue. Or have it brought to your villa within 5 km.": "Pesan duluan, pilih jam, lalu ambil di kasir tanpa antre. Atau kami antar ke vilamu dalam radius 5 km.",
+  "Order for pickup": "Pesan untuk diambil",
+  "See the menu": "Lihat menu",
+  "Ready in about 20 min": "Siap sekitar 20 menit",
+  "A barista and our espresso cart for three hours: flat whites, iced lattes and matcha.": "Barista dan gerobak espresso kami selama tiga jam: flat white, es latte dan matcha."
 }

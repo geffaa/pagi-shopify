@@ -59,11 +59,11 @@ const tomorrowTab = async () => {
   return tomorrow;
 };
 
-await check('home: five categories and thirteen dishes priced in rupiah', async () => {
+await check('home: five categories and fourteen dishes priced in rupiah', async () => {
   await page.goto(`${BASE}/`, { waitUntil: 'networkidle0' });
-  assert((await page.$$('.menu__tabs .chip')).length === 5, 'category tabs');
+  assert((await page.$$('.menu__tabs .tab')).length === 5, 'category tabs');
   const prices = await page.$$eval('.menu .dish .price', (els) => els.map((e) => e.textContent.trim()));
-  assert(prices.length === 13, `dishes: ${prices.length}`);
+  assert(prices.length === 14, `dishes: ${prices.length}`);
   assert(prices.every((p) => /^Rp\d{2,3}\.000$/.test(p)), prices.join(','));
   // The logo goes to the store's home, also when the store lives under a path (GitHub Pages).
   const logo = await page.$eval('.header .wordmark', (a) => a.href);

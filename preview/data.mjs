@@ -107,7 +107,7 @@ export function buildCatalog(locale = 'en') {
   const prefix = LOCALES[locale].prefix;
   const products = {};
   for (const p of raw) {
-    const media = p.art ? [image(`${p.art}.png`, p.title)].filter(Boolean) : [];
+    const media = p.art ? [image(`${p.art}.jpg`, p.title)].filter(Boolean) : [];
     const variants = p.variants.map((v) => ({ id: v.id, title: v.title, price: v.price * 100, available: true, compare_at_price: null }));
     const desc = pick(p, 'description', locale);
     products[p.handle] = {
@@ -178,5 +178,10 @@ export const pages = (locale) => ({
 });
 
 export const shopImages = Object.fromEntries(
-  ['hero-pagi', 'beans-kintamani', 'gift-card', 'platter'].map((n) => [`${n}.png`, { src: `/img/${n}.png`, width: n === 'hero-pagi' ? 1600 : 1200, height: n === 'hero-pagi' ? 1200 : 900, aspect_ratio: 4 / 3, alt: '' }])
+  [
+    ['hero', 900, 1200, 'Brunch dishes and coffee on a wooden table'],
+    ['beans-kintamani', 1200, 900, 'Coffee beans spilling from a sack'],
+    ['gift-card', 1200, 900, 'Pagi gift card'],
+    ['catering', 1200, 900, 'Guests helping themselves to a brunch spread'],
+  ].map(([n, width, height, alt]) => [`${n}.jpg`, { src: `/img/${n}.jpg`, width, height, aspect_ratio: width / height, alt }])
 );
