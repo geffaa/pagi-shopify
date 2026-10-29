@@ -6,6 +6,8 @@ A Shopify build for **Pagi**, a fictional brunch café in Bali that wants its ow
 
 **🍳 Order from the demo café: [geffaa.github.io/pagi-shopify/store/](https://geffaa.github.io/pagi-shopify/store/)**. The real theme, both Functions and the kitchen board run in your browser. Place an order, then open the kitchen board from the thank-you page.
 
+**🎨 UI & design system in Figma: [figma.com/design/…/Pagi](https://www.figma.com/design/K2hh5dzxNxiLj9Z8kR1SqY/Pagi)**. Tokens, components and the key screens, built from the same values as the theme.
+
 [![Home](docs/screenshots/home.png)](https://geffaa.github.io/pagi-shopify/)
 
 | | What | Stack |
@@ -73,6 +75,18 @@ A photo-led menu in the layout people know from delivery apps: name, description
 | | |
 |---|---|
 | ![Menu](docs/screenshots/menu.png) | ![Dish](docs/screenshots/dish.png) |
+
+## UI & design system (Figma)
+
+The interface is also documented as a Figma file: **[Pagi on Figma](https://www.figma.com/design/K2hh5dzxNxiLj9Z8kR1SqY/Pagi)** (view only).
+
+| Page | What's in it |
+|---|---|
+| Cover & Foundations | Case-study cover; 26 variables (colour, spacing, radius) whose code syntax matches the theme's CSS custom properties (`var(--paper)`, `var(--accent)`, `var(--r-md)`…); 11 text styles; colour swatches with their WCAG contrast on the page background |
+| Components | Button, Chip, Time slot (available / low stock / full / selected), Badge, Pickup–Delivery option, Quantity stepper, Add-on option (radio / checkbox), Menu row, Cart line, Kitchen ticket (new / cooking / ready), all bound to the variables |
+| Screens | Mobile flow: menu → dish with add-ons → cart and pickup time → confirmation, plus the cart in Bahasa Indonesia; the kitchen board on a tablet; the desktop menu |
+
+Because the variables carry the same names as the theme's CSS, a change of colour or radius is a single edit in each place, and the Figma file can't drift from what ships.
 
 ## Bahasa Indonesia
 
